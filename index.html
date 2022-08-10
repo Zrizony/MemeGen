@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/png" href="imgs/doge.png" />
+    <title>Meme Generator</title>
+  </head>
+  <body onload="onInit()">
+    <!-- HEADER -->
+    <header class="flex space-between">
+      <img src="imgs/LOGO.png" alt="logo" class="logo" />
+      <nav class="nav flex align-center">
+        <a href="#">Home</a>
+        <a href="#">Saved</a>
+        <a href="#">About</a>
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="">
+      <section class="filter">
+        <input type="text" />
+        <button class="randomMeme">🎲</button>
+      </section>
+      <section
+        class="gallery-container flex flex-wrap justify-center"
+      ></section>
+    </main>
+
+    <!-- EDITOR -->
+
+    <section class="modal">
+      <h3></h3>
+      <button class="btn btn-modal" onclick="onCloseModal()">Ok</button>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <h4>▼click on me to know more▼</h4>
+      <a href="https://zrizony.github.io/RoyGallery/" target="_blank"
+        >©Roy Yam</a
+      >
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/gallery.service.js"></script>
+    <script src="js/services/saves.service.js"></script>
+    <script src="js/services/modal.service.js"></script>
+    <script src="js/gallery.controller.js"></script>
+    <script src="js/saves.controller.js"></script>
+    <script src="js/modal.controller.js"></script>
+  </body>
+</html>

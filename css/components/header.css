@@ -1,0 +1,18 @@
+/* HEADER */
+header {
+  color: #524a4e;
+  background-color: #ffc0d3;
+  padding: 0 20px 0;
+}
+
+.logo {
+  width: 40ch;
+}
+
+.nav {
+  gap: 20px;
+}
+
+.nav a {
+  color: var(--color5);
+}

@@ -1,0 +1,11 @@
+:root {
+  --color1: #524a4e;
+  --color2: #fdeff4;
+  --color3: #ffc0d3;
+  --color4: #ff5c8d;
+  --color5: #ffffff;
+
+  --large: 1000px;
+  --medium: 850px;
+  --small: 600px;
+}

@@ -34,13 +34,14 @@
     <!-- EDITOR -->
     <div class="main-screen full modal-bg" onclick="onToggleModal()"></div>
     <section class="modal flex align-center space-around">
-      <canvas id="canvas" class="meme-canvas"></canvas>
+      <canvas
+        id="canvas"
+        class="meme-canvas"
+        width="500px"
+        height="500px"
+      ></canvas>
       <section class="meme-editor">
-        <input
-          type="text"
-          class="meme-line"
-          placeholder="best meme line ever"
-        />
+        <input type="text" class="meme-line" placeholder="memiest line ever" />
         <button class="btn btn-modal btn-line-focus">🔄</button>
         <button class="btn btn-modal btn-add-line">➕</button>
         <button class="btn btn-modal btn-delete-line">❌</button>

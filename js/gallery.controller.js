@@ -18,7 +18,6 @@ function onImgSelect(imgId) {
   const img = getImgById(imgId)
 
   const elModal = document.querySelector('.modal')
-  createMeme(img.id)
   elModal.classList.add('open')
 }
 

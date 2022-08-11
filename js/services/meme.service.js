@@ -18,6 +18,7 @@ function createMeme(selectedImgId) {
           size: 20,
           align: 'left',
           color: 'white',
+          isDrag: false,
         },
       ],
     },
@@ -25,5 +26,6 @@ function createMeme(selectedImgId) {
 }
 
 function getMeme() {
+  console.log(gMeme)
   return gMeme
 }

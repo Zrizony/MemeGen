@@ -27,7 +27,8 @@ function renderMeme() {
   gCtx.drawImage(elImg, 1, 1, elImg.width, elImg.height)
 }
 
-//*DOTO - change line input live
+//*DONE - change line input live
+//*DONE - add line
 function renderText() {
   gElCanvas = document.getElementById('canvas')
   gCtx = canvas.getContext('2d')
@@ -46,7 +47,6 @@ function renderText() {
   document.querySelector('.meme-text').value = ''
 }
 
-//DOTO - add line
 //DOTO - change line focus
 //DOTO - remove line
 //DOTO - change font size

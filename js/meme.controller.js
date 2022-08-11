@@ -34,31 +34,20 @@ function renderText() {
 
   let txt = createText()
 
-  gCtx.font = '3rem Arial'
-  gCtx.fillText(txt, 0, gElCanvas.height / 2)
-  gCtx.strokeStyle = 'white'
-  gCtx.strokeText(txt, 0, gElCanvas.height / 2)
+  gCtx.font = '3rem Impact'
+  gCtx.textAlign = 'center'
+  gCtx.textBaseline = 'middle'
+  gCtx.fillStyle = 'white'
+  gCtx.fillText(txt, gElCanvas.width / 2, gElCanvas.height / 2)
+  gCtx.strokeStyle = 'black'
+  gCtx.strokeText(txt, gElCanvas.width / 2, gElCanvas.height / 2)
+
+  gCurrText++
+  document.querySelector('.meme-text').value = ''
 }
 
-function getEvPos(ev) {
-  var pos = {
-    x: ev.offsetX,
-    y: ev.offsetY,
-  }
-  // const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
-  if (gTouchEvs.includes(ev.type)) {
-    ev.preventDefault()
-    ev = ev.changedTouches[0]
-    pos = {
-      x: ev.pageX - ev.target.offsetLeft,
-      y: ev.pageY - ev.target.offsetTop,
-    }
-  }
-  return pos
-}
-
-//DOTO - change line focus
 //DOTO - add line
+//DOTO - change line focus
 //DOTO - remove line
 //DOTO - change font size
 //DOTO - change text align side

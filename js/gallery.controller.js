@@ -15,7 +15,11 @@ function renderGallery() {
 }
 
 function onImgSelect(imgId) {
+  console.log(imgId)
   const img = getImgById(imgId)
+  // const elImg = document.querySelector('.img' + img.id)
+  createMeme(imgId)
+  renderMeme()
 
   const elModal = document.querySelector('.modal')
   elModal.classList.add('open')

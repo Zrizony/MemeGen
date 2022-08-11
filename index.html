@@ -31,10 +31,45 @@
     </main>
 
     <!-- EDITOR -->
-
-    <section class="modal">
-      <h3></h3>
-      <button class="btn btn-modal" onclick="onCloseModal()">Ok</button>
+    <div class="main-screen full modal-bg" onclick="onToggleModal()"></div>
+    <section class="modal flex align-center space-around">
+      <canvas id="canvas" class="meme-canvas"></canvas>
+      <section class="meme-editor">
+        <input
+          type="text"
+          class="meme-line"
+          placeholder="best meme line ever"
+        />
+        <button class="btn btn-modal btn-line-focus">🔄</button>
+        <button class="btn btn-modal btn-add-line">➕</button>
+        <button class="btn btn-modal btn-delete-line">❌</button>
+        <!----------- font settings ----------->
+        <section class="meme-font">
+          <button class="btn btn-increase-font">A+</button>
+          <button class="btn btn-decrease-font">A-</button>
+          <button class="btn btn-align-left">
+            <i class="fas fa-align-left"></i>
+          </button>
+          <button class="btn btn-align-center">center</button>
+          <button class="btn btn-align-right">right</button>
+          <label for="stroke-color">stroke color</label>
+          <input type="color" class="stroke-color" />
+          <label for="font-color">font color</label>
+          <input type="color" class="font-color" />
+        </section>
+        <!----------- stickers ----------->
+        <section class="meme-stickers">
+          <button class="btn btn-sticker-left"><</button>
+          <span class="stickers">stickers here</span>
+          <button class="btn btn-sticker-right">></button>
+        </section>
+        <!----------- social ----------->
+        <section class="meme-social">
+          <button class="btn btn-download">download</button>
+          <button class="btn btn-save" onclick="onToggleModal()">save</button>
+          <button class="btn btn-share">share</button>
+        </section>
+      </section>
     </section>
 
     <!-- FOOTER -->
@@ -46,12 +81,16 @@
     </footer>
 
     <!-- SCRIPTS -->
+    <script
+      src="https://kit.fontawesome.com/1346f0f8d8.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/gallery.service.js"></script>
     <script src="js/services/saves.service.js"></script>
     <script src="js/services/modal.service.js"></script>
     <script src="js/gallery.controller.js"></script>
     <script src="js/saves.controller.js"></script>
-    <script src="js/modal.controller.js"></script>
+    <script src="js/meme.controller.js"></script>
   </body>
 </html>

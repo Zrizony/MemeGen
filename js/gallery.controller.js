@@ -1,7 +1,6 @@
 'use strict'
 
 function onInit() {
-  console.log('gallery.cont')
   renderGallery()
 }
 
@@ -16,10 +15,10 @@ function renderGallery() {
 }
 
 function onSelectImg(imgId) {
-  const img = getImgById(imgId)
+  let img = getImgById(imgId)
 
   const elModal = document.querySelector('.modal')
-  elModal.querySelector('h3').innerText = 'In Progress...'
+  createMeme(img.id)
   elModal.classList.add('open')
 }
 

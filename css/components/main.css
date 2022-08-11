@@ -9,3 +9,7 @@ main {
 .gallery-container {
   gap: 10px;
 }
+
+.gallery-container img {
+  cursor: pointer;
+}

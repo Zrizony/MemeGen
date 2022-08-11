@@ -26,3 +26,7 @@ a {
   font-size: 1.5em;
   color: #524a4e;
 }
+
+.btn {
+  cursor: pointer;
+}

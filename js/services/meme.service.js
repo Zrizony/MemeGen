@@ -22,3 +22,5 @@ function createMeme(selectedImgId) {
 function getMeme() {
   return gMeme
 }
+
+function createText() {}

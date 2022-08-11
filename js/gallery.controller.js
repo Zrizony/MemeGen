@@ -8,13 +8,13 @@ function renderGallery() {
   const imgs = getImgForDisplay()
   let strHTMLs = imgs.map(
     (img) => `
-  <img src="imgs/${img.id}.jpg" alt="" class="img${img.id}" onclick="onSelectImg(${img.id})" />`
+  <img src="imgs/${img.id}.jpg" alt="" class="img${img.id}" onclick="onImgSelect(${img.id})" />`
   )
 
   document.querySelector('.gallery-container').innerHTML = strHTMLs.join('')
 }
 
-function onSelectImg(imgId) {
+function onImgSelect(imgId) {
   const img = getImgById(imgId)
 
   const elModal = document.querySelector('.modal')

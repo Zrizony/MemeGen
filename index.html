@@ -10,13 +10,37 @@
   </head>
   <body onload="onInit()">
     <!-- HEADER -->
-    <header class="flex space-between">
-      <img src="imgs/LOGO.png" alt="logo" class="logo" />
-      <nav class="nav flex align-center">
-        <a href="#">Home</a>
-        <a href="#">Saved</a>
-        <a href="#">About</a>
-      </nav>
+    <div class="main-screen full" onclick="toggleMenu()"></div>
+
+    <header class="main-header-container full main-layout">
+      <div class="main-header flex space-between align-center">
+        <div class="logo main-logo">
+          <img src="imgs/LOGO.png" alt="logo" class="logo" />
+        </div>
+        <nav class="main-nav">
+          <ul id="myLinks" class="main-nav-list flex clean-list">
+            <li class="flex align-center">
+              <a href="#" onclick="toggleMenu()">Journal</a>
+            </li>
+            <li class="flex align-center">
+              <a href="#" onclick="toggleMenu()">About</a>
+            </li>
+            <li class="flex align-center">
+              <a href="#" onclick="toggleMenu()">Work</a>
+            </li>
+            <li class="flex align-center">
+              <a href="#" onclick="toggleMenu()">Contact</a>
+            </li>
+          </ul>
+          <a
+            href="javascript:void(0);"
+            class="icon nav-burger toggle-menu"
+            onclick="toggleMenu()"
+          >
+            <i class="fa fa-bars"></i>
+          </a>
+        </nav>
+      </div>
     </header>
 
     <!-- MAIN -->

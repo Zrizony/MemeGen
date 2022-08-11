@@ -1,7 +1,5 @@
 'use strict'
 
-const STORAGE_KEY = 'memeDB'
-
 var gImgs = [
   {
     id: 1,

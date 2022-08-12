@@ -1,6 +1,6 @@
 'use strict'
 
-var gImgs = [
+let gImgs = [
   {
     id: 1,
     url: 'imgs/1.jpg',
@@ -94,8 +94,8 @@ var gImgs = [
 ]
 
 function getImgForDisplay() {
-  const IMGS = gImgs
-  return IMGS
+  let imgs = gImgs
+  return imgs
 }
 
 function getImgById(imgId) {

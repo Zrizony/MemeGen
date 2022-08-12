@@ -2,12 +2,12 @@
 
 const elSearchContainer = document.querySelector('.search-main')
 const elMainGallery = document.querySelector('.gallery-main')
-const elMainEdit = document.querySelector('.main-edit')
+const elMainEdit = document.querySelector('.edit-main')
 
 function onInit() {
   gElCanvas = document.getElementById('canvas')
   gCtx = canvas.getContext('2d')
-  // resizeCanvas()
+  resizeCanvas()
   renderGallery()
 }
 
@@ -18,27 +18,32 @@ function onSearchInput() {
 
 //---- rendering gallery ----//
 function renderGallery() {
-  const currSearchValue = document.querySelector('.search-input').value
-  const imgs = getImgForDisplay()
-  if (!currSearchValue) {
-    imgs = getImgForDisplay()
-  } else {
-    imgs = getImgBySearchFilter(currSearchValue)
-  }
-  let strHTMLs = imgs.map(
-    (img) => `
-  <img src="imgs/${img.id}.jpg" alt="" class="img${img.id}" onclick="onImgSelect(${img.id})" />`
+  // const currSearchValue = document.getElementById('search-input').value
+  // console.log('currSearchValue:', currSearchValue)
+  let imgs = getImgForDisplay()
+  // if (!currSearchValue) {
+  //   imgs = getImgForDisplay()
+  // } else {
+  //   imgs = getImgBySearchFilter(currSearchValue)
+  // }
+
+  let strHtmls = imgs.map(
+    (img) =>
+      `
+    <img id="img${img.id}" class="gallery-img " src="${img.url}" onclick="onImgSelect(${img.id})">
+    `
   )
 
-  document.querySelector('.gallery-main').innerHTML = strHTMLs.join('')
+  console.log(imgs)
+  document.querySelector('.grid-container').innerHTML = strHtmls.join('')
 }
 
 //---- opening meme editor modal with selected image ----//
 function onImgSelect(imgId) {
-  console.log(imgId)
   const img = getImgById(imgId)
-  // const elImg = document.querySelector('.img' + img.id)
-  createMeme(imgId)
+  const elCanvas = document.getElementById('canvas')
+  const center = { x: elCanvas.width / 2, y: elCanvas.height / 2 }
+  createMeme(img, center)
   renderMeme()
 
   const elModal = document.querySelector('.modal')
@@ -52,8 +57,17 @@ function onCloseModal() {
 
 //---- Uploading user image to canvas ----//
 function onImgUpload(ev) {
-  const elCanvas = document.querySelector('.canvas-container canvas')
+  const elCanvas = document.getElementById('canvas')
   const center = { x: elCanvas.width / 2, y: elCanvas.height / 2 }
   createMeme(0, center)
   uploadImage(ev, renderImg)
+}
+
+//---- loading images by search keyword ----//
+function onSearchSubmit(e) {
+  e.preventDefault()
+  const elSearch = document.querySelector('.search-form input')
+  const searchVal = elSearch.value
+
+  elSearch.value = ''
 }

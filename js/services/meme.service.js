@@ -18,9 +18,9 @@ function createMeme(imgId, pos) {
         strokeSize: 8,
         textColor: 'white',
         strokeColor: 'black',
+        pos,
         onFocus: false,
         isDrag: false,
-        pos,
       },
     ],
   }

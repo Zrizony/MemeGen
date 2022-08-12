@@ -42,11 +42,11 @@
 
     <!-- EDITOR -->
     <div class="main-screen full modal-bg" onclick="onToggleModal()"></div>
-    <section class="main-edit modal flex align-center space-around">
-      <div class="cavnas-container">
+    <section class="edit-main modal flex align-center space-around">
+      <div class="canvas-container">
         <canvas
           id="canvas"
-          class="meme-canvas"
+          class="canvas"
           width="500px"
           height="500px"
         ></canvas>
@@ -58,13 +58,19 @@
             type="text"
             class="meme-text"
             placeholder="memiest text ever"
-            oninput="renderText()"
+            onchange="onRenderText()"
             value=""
           />
         </div>
-        <button class="btn-modal btn-add-line">➕</button>
-        <button class="btn-modal btn-change-focus">🔄</button>
-        <button class="btn-modal btn-delete-line">❌</button>
+        <button class="btn-modal btn-add-line" onclick="onAddNewText()">
+          ➕
+        </button>
+        <button class="btn-modal btn-change-focus" onclick="onChangeLine()">
+          🔄
+        </button>
+        <button class="btn-modal btn-delete-line" onclick="onDeleteText()">
+          ❌
+        </button>
         <!----------- font settings ----------->
         <section class="meme-font">
           <button class="btn-modal btn-font-up">A+</button>

@@ -1,9 +1,9 @@
 'use strict'
 
-var gElCanvas
-var gCtx
-var gStartPos
-var gUserImg
+let gElCanvas
+let gCtx
+let gStartPos
+let gUserImg
 
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 const gElCanvasContainer = document.querySelector('.canvas-container')
@@ -21,25 +21,6 @@ function resizeCanvas() {
 }
 
 //---- rendering selected img into canvas ----//
-function renderMeme() {
-  //-- meme object
-  const currMeme = getMeme()
-
-  //-- img HTML
-  const elImg = document.querySelector(`.img${currMeme.selectedImgId}`)
-
-  //-- img into cavnas
-  if (!elImg) {
-    //-- render img uploaded by the user
-    renderImg(gUserImg)
-  } else {
-    //--render img chosen from the website stock
-    renderWebsiteImg(elImg)
-  }
-
-  renderText()
-}
-
 function renderWebsiteImg(elImg) {
   gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
 }
@@ -58,12 +39,14 @@ function uploadImage(ev, onImageReady) {
 
 function renderImg(img) {
   gUserImg = img
+  console.log('img:', img)
+  console.log('gUserImg:', gUserImg)
 
-  const hRatio = gElCanvas.width / img.width
-  const vRatio = gElCanvas.height / img.height
-  const ratio = Math.min(hRatio, vRatio)
-  var centerShift_x = (gElCanvas.width - img.width * ratio) / 2
-  var centerShift_y = (gElCanvas.height - img.height * ratio) / 2
+  let wRatio = gElCanvas.width / img.width
+  let hRatio = gElCanvas.height / img.height
+  let ratio = Math.min(wRatio, hRatio)
+  let centerShift_x = (gElCanvas.width - img.width * ratio) / 2
+  let centerShift_y = (gElCanvas.height - img.height * ratio) / 2
   gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
   gCtx.drawImage(
     img,
@@ -78,20 +61,41 @@ function renderImg(img) {
   )
 }
 
+function renderMeme() {
+  const currMeme = getMeme()
+  console.log('currmeme:', currMeme)
+
+  const elImg = document.getElementById(`img${currMeme.selectedImgId.id}`)
+  console.log('elImg', elImg)
+
+  renderImg(gUserImg)
+  // if (!elImg) {
+  // } else {
+  //   renderWebsiteImg(elImg)
+  // }
+
+  onRenderText()
+
+  const elModal = document.querySelector('.modal')
+  elModal.classList.add('open')
+}
+
 //*DONE - add line
-function renderText() {
+function onRenderText() {
   const meme = getMeme()
   for (let i = 0; i < meme.lines.length; i++) {
     const newText = meme.lines[i]
     drawText(
-      newText.pos.x,
-      newText.pos.y,
-      newText.color,
-      newText.strokeColor,
+      newText.txt,
       newText.size,
       newText.strokeSize,
-      newText.text
+      newText.textColor,
+      newText.strokeColor,
+      newText.pos.x,
+      newText.pos.y
     )
+    console.log('meme:', meme)
+    console.log('newText:', newText)
   }
 }
 
@@ -111,9 +115,9 @@ function drawText(x, y, color, strokeColor, size, strokeSize, text) {
 
 function onAddNewText() {
   const elCanvas = document.querySelector('.canvas-container canvas')
-  const center = { x: elCanvas.width / 2, y: elCanvas.height / 2 }
+  const center = { x: elCanvas.width, y: elCanvas.height }
   newTextLine(center)
-  document.querySelector('.edit-text input').value = ''
+  document.querySelector('.text-edit input').value = ''
 }
 
 //*DONE - change line input live

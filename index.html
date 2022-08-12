@@ -47,8 +47,8 @@
         <canvas
           id="canvas"
           class="canvas"
-          width="500px"
-          height="500px"
+          width="666px"
+          height="666px"
         ></canvas>
       </div>
       <section class="meme-editor">
@@ -58,7 +58,7 @@
             type="text"
             class="meme-text"
             placeholder="memiest text ever"
-            onchange="onRenderText()"
+            oninput="onTypingText()"
             value=""
           />
         </div>
@@ -73,16 +73,31 @@
         </button>
         <!----------- font settings ----------->
         <section class="meme-font">
-          <button class="btn-modal btn-font-up">A+</button>
-          <button class="btn-modal btn-font-down">A-</button>
-          <button class="btn-modal btn-stroke-up">S+</button>
-          <button class="btn-modal btn-stroke-down">S-</button>
-          <button class="btn-modal btn-align-left">left</button>
-          <button class="btn-modal btn-align-center">center</button>
-          <button class="btn-modal btn-align-right">right</button>
-          <label for="font-color">font color</label>
+          <button class="btn-modal btn-font-up" onclick="onFontSizeUp()">
+            A+
+          </button>
+          <button class="btn-modal btn-font-down" onclick="onFontSizeDown()">
+            A-
+          </button>
+          <button class="btn-modal btn-stroke-up" onclick="onStrokeSizeUp()">
+            S+
+          </button>
+          <button
+            class="btn-modal btn-stroke-down"
+            onclick="onStrokeSizeDown()"
+          >
+            S-
+          </button>
+          <button class="btn-modal btn-align-left" onclick="">left</button>
+          <button class="btn-modal btn-align-center" onclick="">center</button>
+          <button class="btn-modal btn-align-right" onclick="">right</button>
+          <label for="font-color" onchange="onFontColorChange()"
+            >font color</label
+          >
           <input type="color" class="font-color" />
-          <label for="stroke-color">stroke color</label>
+          <label for="stroke-color" onchange="onStrokeColorChange()"
+            >stroke color</label
+          >
           <input type="color" class="stroke-color" />
         </section>
         <!----------- stickers ----------->

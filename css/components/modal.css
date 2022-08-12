@@ -27,6 +27,7 @@
 .canvas-container {
   width: 666px;
   height: 666px;
+  overflow: hidden;
 }
 
 .meme-editor {

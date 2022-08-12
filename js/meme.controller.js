@@ -87,13 +87,14 @@ function onRenderText() {
       newText.strokeSize,
       newText.textColor,
       newText.strokeColor,
-      newText.pos.x,
-      newText.pos.y
+      newText.x,
+      newText.y
     )
+    console.log('newText:', newText)
   }
 }
 
-function drawText(x, y, color, strokeColor, size, strokeSize, text) {
+function drawText(x, y, color, strokeColor, size, strokeSize, txt) {
   gCtx.beginPath()
   gCtx.font = `${size}px Impact `
   gCtx.lineJoin = 'miter'
@@ -101,9 +102,9 @@ function drawText(x, y, color, strokeColor, size, strokeSize, text) {
   gCtx.fillStyle = color
   gCtx.strokeStyle = strokeColor
   gCtx.lineWidth = strokeSize
-  gCtx.strokeText(text, x, y)
+  gCtx.strokeText(txt, x, y)
   gCtx.fill()
-  gCtx.fillText(text, x, y)
+  gCtx.fillText(txt, x, y)
   gCtx.closePath()
 }
 
@@ -161,18 +162,18 @@ function onStrokeColorChange() {
 //*DONE - change line focus
 function onChangeLine() {
   changeTextFocus()
-  const currTextLine = getMeme().lines[gCurrLine].text
-  document.querySelector('.edit-text input').value = currTextLine
+  const currTextLine = getMeme().lines[gCurrLine].txt
+  document.querySelector('.text-edit input').value = currTextLine
 }
 
 //*DONE - remove line
 function onDeleteText() {
-  const elCanvas = document.querySelector('.canvas-container canvas')
+  const elCanvas = document.getElementById('canvas')
   const center = { x: elCanvas.width / 2, y: elCanvas.height / 2 }
   deleteText(center)
   renderMeme()
-  const currTextLine = getMeme().lines[gCurrLine].text
-  document.querySelector('.edit-text input').value = currTextLine
+  const currTextLine = getMeme().lines[gCurrLine].txt
+  document.querySelector('.text-edit input').value = currTextLine
 }
 
 //*DONE - add download onclick

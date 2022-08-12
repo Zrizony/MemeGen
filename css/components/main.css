@@ -1,15 +1,22 @@
 /* MAIN */
-main {
-  width: 100%;
-  height: 100%;
-  background-color: #524a4e;
-  background-image: url('/imgs/bg.png');
+.grid-container {
+  display: grid;
+  padding: 20px 0;
+  grid-template-columns: repeat(5, 1fr);
+  grid-row: repeat(5, 1fr);
+  gap: 20px;
 }
 
-.gallery-container {
-  gap: 10px;
-}
-
-.gallery-container img {
+.gallery-img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
   cursor: pointer;
+  transform: scale(100%);
+  transition: transform 0.3s;
+}
+.gallery-img:hover {
+  transform: scale(110%);
+  transition: transform 0.3s;
 }

@@ -3,17 +3,17 @@
 const STORAGE_KEY = 'memeDB'
 
 var gMeme
-var gCurrText
+var gCurrLine
 
 //---- create single meme ----//
 function createMeme(imgId, pos) {
-  gCurrText = 0
+  gCurrLine = 0
   gMeme = {
     selectedImgId: imgId.id,
-    selectedLineIdx: gCurrText,
+    selectedLineIdx: gCurrLine,
     lines: [
       {
-        txt: '',
+        txt: 'never gonna',
         size: 40,
         strokeSize: 8,
         textColor: 'white',
@@ -51,7 +51,7 @@ function newTextLine(pos) {
   }
 
   gMeme.lines.push(newText)
-  gCurrText++
+  gCurrLine++
 }
 
 function changeTextFocus() {
@@ -66,7 +66,7 @@ function deleteText(pos) {
   if (gMeme.lines.length === 1) {
     gMeme.lines[gCurrLine].text = ''
     gMeme.lines[gCurrLine].pos = pos
-    document.querySelector('.edit-text input').value = ''
+    document.querySelector('.text-edit input').value = ''
     return
   }
   gMeme.lines.splice(gCurrLine, 1)
@@ -99,7 +99,66 @@ function strokeColorChange(strokeColor) {
   gMeme.lines[gCurrLine].strokeColor = strokeColor
 }
 
-// handle text dragging //
+//---- handle eventListeners ----//
+
+function addListeners() {
+  addMouseListeners()
+  // addTouchListeners()
+}
+
+function addMouseListeners() {
+  gElCanvas.addEventListener('mousedown', onDown)
+  gElCanvas.addEventListener('mousemove', onMove)
+  gElCanvas.addEventListener('mouseup', onUp)
+}
+
+function onDown(ev) {
+  // Getting the clicked position
+  const pos = getEvPos(ev)
+  // { x: 15, y : 15 }
+  if (!isTextClicked(pos)) return
+  console.log('Clicked')
+  setTextDrag(true)
+  gStartPos = pos
+  document.querySelector('.canvas-container canvas').style.cursor = 'grabbing'
+}
+
+function onMove(ev) {
+  const meme = getMeme()
+
+  // console.log(ev);
+  if (!meme.lines[gCurrLine].isDrag) return
+  const pos = getEvPos(ev)
+  const dx = pos.x - gStartPos.x
+  const dy = pos.y - gStartPos.y
+  moveText(dx, dy)
+  gStartPos = pos
+  renderMeme()
+}
+
+function getEvPos(ev) {
+  var pos = {
+    x: ev.offsetX,
+    y: ev.offsetY,
+  }
+  // const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
+  if (gTouchEvs.includes(ev.type)) {
+    ev.preventDefault()
+    ev = ev.changedTouches[0]
+    pos = {
+      x: ev.pageX - ev.target.offsetLeft,
+      y: ev.pageY - ev.target.offsetTop,
+    }
+  }
+  return pos
+}
+
+function onUp() {
+  setTextDrag(false)
+  gElCanvas.style.cursor = 'grab'
+}
+
+//---- handle text dragging ----//
 function isTextClicked(clickedPos) {
   const { pos } = gMeme.lines[gCurrLine]
   const distance = Math.sqrt(

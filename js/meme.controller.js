@@ -40,11 +40,11 @@ function uploadImage(ev, onImageReady) {
 function renderImg(img) {
   gUploadImg = img
 
-  let wRatio = gElCanvas.width / img.width
-  let hRatio = gElCanvas.height / img.height
-  let ratio = Math.min(wRatio, hRatio)
-  let centerShift_x = (gElCanvas.width - img.width * ratio) / 2
-  let centerShift_y = (gElCanvas.height - img.height * ratio) / 2
+  const hRatio = gElCanvas.width / img.width
+  const vRatio = gElCanvas.height / img.height
+  const ratio = Math.min(hRatio, vRatio)
+  var centerShift_x = (gElCanvas.width - img.width * ratio) / 2
+  var centerShift_y = (gElCanvas.height - img.height * ratio) / 2
   gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
   gCtx.drawImage(
     img,
@@ -69,48 +69,44 @@ function renderMeme() {
   } else {
     renderWebsiteImg(elImg)
   }
-
-  onRenderText()
-
-  const elModal = document.querySelector('.modal')
-  elModal.classList.add('open')
+  renderText()
 }
 
 //*DONE - add line
-function onRenderText() {
+function renderText() {
   const meme = getMeme()
   for (let i = 0; i < meme.lines.length; i++) {
     const newText = meme.lines[i]
     drawText(
-      newText.txt,
-      newText.size,
-      newText.strokeSize,
+      newText.pos.x,
+      newText.pos.y,
       newText.textColor,
       newText.strokeColor,
-      newText.x,
-      newText.y
+      newText.size,
+      newText.strokeSize,
+      newText.txt
     )
-    console.log('newText:', newText)
   }
 }
 
-function drawText(x, y, color, strokeColor, size, strokeSize, txt) {
+function drawText(x, y, TextColor, strokeColor, size, strokeSize, text) {
   gCtx.beginPath()
   gCtx.font = `${size}px Impact `
   gCtx.lineJoin = 'miter'
   gCtx.miterLimit = 2
-  gCtx.fillStyle = color
+  gCtx.fillStyle = TextColor
   gCtx.strokeStyle = strokeColor
   gCtx.lineWidth = strokeSize
-  gCtx.strokeText(txt, x, y)
+  gCtx.strokeText(text, x, y)
   gCtx.fill()
-  gCtx.fillText(txt, x, y)
+  gCtx.fillText(text, x, y)
   gCtx.closePath()
 }
 
+//---- Editor onclicks ----//
 function onAddNewText() {
   const elCanvas = document.querySelector('.canvas-container canvas')
-  const center = { x: elCanvas.width, y: elCanvas.height }
+  const center = { x: elCanvas.width / 2, y: elCanvas.height / 2 }
   newTextLine(center)
   document.querySelector('.text-edit input').value = ''
 }
@@ -186,6 +182,7 @@ function onDownload() {
 //*DONE - add save onclick
 function onSave() {
   saveImg()
+  flashMsg('Saved meme')
 }
 
 //*DONE - add share to facebook onclick
@@ -194,3 +191,13 @@ function onShareToFacebook() {
 }
 
 //DOTO - add stickers functionality
+
+//---- flash msg to notify small updates ----//
+function flashMsg(msg) {
+  const el = document.querySelector('.flash-msg')
+  el.innerText = msg
+  el.classList.add('open')
+  setTimeout(() => {
+    el.classList.remove('open')
+  }, 3000)
+}

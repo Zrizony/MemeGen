@@ -3,11 +3,21 @@
 const elSearchContainer = document.querySelector('.search-main')
 const elMainGallery = document.querySelector('.gallery-main')
 const elMainEdit = document.querySelector('.edit-main')
+const elMainSaved = document.querySelector('.saves-main')
+const elMainAbout = document.querySelector('.about-main')
+const elSearch = document.querySelector('#search-input')
 
+let fontSizes
+
+//---- initializing onload ----//
 function onInit() {
+  elSearch.value = ''
   gElCanvas = document.getElementById('canvas')
   gCtx = canvas.getContext('2d')
   resizeCanvas()
+  createKeyWords()
+  renderKeywords()
+
   renderGallery()
 }
 
@@ -16,34 +26,89 @@ function onSearchInput() {
   renderGallery()
 }
 
+function onSearchSubmit(e) {
+  e.preventDefault()
+  const elSearch = document.querySelector('.search-form input')
+  const searchVal = elSearch.value
+
+  elSearch.value = ''
+}
+
+//-- keywords functions
+function onWordClick(ev) {
+  document.getElementById('search-input').value = ev.innerHTML.toString()
+  onSearchInput()
+  renderKeywords()
+  for (let i = 0; i < Object.keys(fontSizes).length; i++) {
+    if (ev.innerHTML.toString() === Object.keys(fontSizes)[i].toString()) {
+      if (fontSizes[Object.keys(fontSizes)[i]] >= 100) return
+      fontSizes[Object.keys(fontSizes)[i]] += Object.keys(fontSizes).length - 1
+    } else {
+      if (fontSizes[Object.keys(fontSizes)[i]] <= 10) return
+      fontSizes[Object.keys(fontSizes)[i]] -= 1
+    }
+  }
+  saveToStorage('keywordsDB', fontSizes)
+}
+
+function renderKeywords() {
+  let htmlStr = ``
+
+  for (let i = 0; i < Object.keys(fontSizes).length; i++) {
+    htmlStr += `<span onclick="onWordClick(this)" class="keyword keyword${
+      i + 1
+    }">${Object.keys(fontSizes)[i]}</span><span>   </span>`
+  }
+
+  document.querySelector('.search-keywords').innerHTML = htmlStr
+
+  for (let i = 0; i < Object.keys(fontSizes).length; i++) {
+    const word = Object.keys(fontSizes)[i]
+
+    document.querySelector(
+      `.keyword${i + 1}`
+    ).style.fontSize = `${fontSizes[word]}px`
+  }
+}
+
+function createKeyWords() {
+  let newFontSizes = loadFromStorage('keywordsDB') || null
+  if (!newFontSizes) {
+    newFontSizes = { classic: 55, movie: 15, politics: 60, funny: 30 }
+  }
+  fontSizes = newFontSizes
+  saveToStorage('keywordsDB', fontSizes)
+}
+
 //---- rendering gallery ----//
 function renderGallery() {
-  // const currSearchValue = document.getElementById('search-input').value
-  let imgs = getImgForDisplay()
-  // if (!currSearchValue) {
-  //   imgs = getImgForDisplay()
-  // } else {
-  //   imgs = getImgBySearchFilter(currSearchValue)
-  // }
+  const elGrid = document.querySelector('.grid-container')
+  const currSearchValue = document.getElementById('search-input').value
+  let gallery
+  if (!currSearchValue) {
+    gallery = getImgForDisplay()
+  } else {
+    gallery = getImgBySearchFilter(currSearchValue)
+  }
 
-  let strHtmls = imgs.map(
+  let htmlStr = gallery.map(
     (img) =>
       `
-    <img id="img${img.id}" class="gallery-img " src="${img.url}" onclick="onImgSelect(${img.id})">
+    <img id="img${img.id}" class="gallery-img gallery-img${img.id}" src="${img.url}" alt="" onclick="onImgSelect(${img.id})">
     `
   )
-
-  document.querySelector('.grid-container').innerHTML = strHtmls.join('')
+  elGrid.innerHTML = htmlStr.join('')
 }
 
 //---- opening meme editor modal with selected image ----//
 function onImgSelect(imgId) {
   const elCanvas = document.getElementById('canvas')
   const img = getImgById(imgId)
+  const elImg = document.querySelector(`.gallery-img${img.id}`)
 
   const center = { x: elCanvas.width / 2, y: elCanvas.height / 2 }
   createMeme(img, center)
-  renderMeme()
+  renderWebsiteImg(elImg)
 
   const elModal = document.querySelector('.modal')
   elModal.classList.add('open')

@@ -1,7 +1,5 @@
 'use strict'
 
-const STORAGE_KEY = 'memeDB'
-
 var gMeme
 var gCurrLine
 
@@ -13,7 +11,7 @@ function createMeme(imgId, pos) {
     selectedLineIdx: gCurrLine,
     lines: [
       {
-        txt: 'never gonna',
+        txt: '',
         size: 40,
         strokeSize: 8,
         textColor: 'white',
@@ -34,20 +32,18 @@ function getMeme() {
 
 //------------Text Settings------------//
 function createText(memeText, selectedLineIdx) {
-  gMeme.lines[selectedLineIdx].text = memeText
+  gMeme.lines[selectedLineIdx].txt = memeText
 }
 
 function newTextLine(pos) {
   let newText = {
     txt: '',
-    align: 'center',
     size: 40,
     strokeSize: 8,
-    textColor: 'white',
+    color: 'white',
     strokeColor: 'black',
-    onFocus: false,
-    isDrag: false,
     pos,
+    isDrag: false,
   }
 
   gMeme.lines.push(newText)
@@ -64,7 +60,7 @@ function changeTextFocus() {
 
 function deleteText(pos) {
   if (gMeme.lines.length === 1) {
-    gMeme.lines[gCurrLine].text = ''
+    gMeme.lines[gCurrLine].txt = ''
     gMeme.lines[gCurrLine].pos = pos
     document.querySelector('.text-edit input').value = ''
     return
@@ -78,7 +74,8 @@ function fontSizeUp() {
 }
 
 function fontSizeDown() {
-  if (!gMeme.lines[gCurrLine].size === 10) gMeme.lines[gCurrLine].size -= 2
+  if (gMeme.lines[gCurrLine].size === 10) return
+  gMeme.lines[gCurrLine].size -= 2
 }
 
 function strokeSizeUp() {
@@ -86,9 +83,8 @@ function strokeSizeUp() {
 }
 
 function strokeSizeDown() {
-  if (!gMeme.lines[gCurrLine].strokeSize === 0) {
-    gMeme.lines[gCurrLine].strokeSize -= 1
-  }
+  if (gMeme.lines[gCurrLine].strokeSize === 0) return
+  gMeme.lines[gCurrLine].strokeSize -= 1
 }
 
 function fontColorChange(fontColor) {
@@ -117,7 +113,6 @@ function onDown(ev) {
   const pos = getEvPos(ev)
   // { x: 15, y : 15 }
   if (!isTextClicked(pos)) return
-  console.log('Clicked')
   setTextDrag(true)
   gStartPos = pos
   document.querySelector('.canvas-container canvas').style.cursor = 'grabbing'
@@ -126,7 +121,6 @@ function onDown(ev) {
 function onMove(ev) {
   const meme = getMeme()
 
-  // console.log(ev);
   if (!meme.lines[gCurrLine].isDrag) return
   const pos = getEvPos(ev)
   const dx = pos.x - gStartPos.x

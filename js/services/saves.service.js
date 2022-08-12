@@ -1,15 +1,17 @@
 'use strict'
 
-//---- upload, save and share ----//
-// let gSavedMeme = loadFromStorage(gSavedMemesDB) || []
+const STORAGE_KEY = 'memesDB'
 
+let gSavedMeme = loadFromStorage(STORAGE_KEY) || []
+
+//---- upload, save and share ----//
 function saveImg() {
   const imgDataUrl = gElCanvas.toDataURL('image/jpeg')
   function onSuccess(uploadedImgUrl) {
     const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
     const newImgUrl = getImgUrl(uploadedImgUrl)
     gSavedMeme.push(newImgUrl)
-    saveToStorage(gSavedMemesDB, gSavedMeme)
+    saveToStorage(STORAGE_KEY, gSavedMeme)
     console.log(gSavedMeme)
   }
   doUploadImg(imgDataUrl, onSuccess)

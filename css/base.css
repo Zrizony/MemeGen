@@ -30,3 +30,18 @@ a {
 .btn {
   cursor: pointer;
 }
+
+/* flash mgs */
+.flash-msg {
+  position: fixed;
+  bottom: -100px;
+  right: 10px;
+  background-color: #111;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+}
+.flash-msg.open {
+  bottom: 10px;
+  transition: bottom 0.5s;
+}

@@ -4,7 +4,7 @@ let gImgs = [
   {
     id: 1,
     url: 'imgs/1.jpg',
-    keywords: ['speech', 'funny', 'politic'],
+    keywords: ['speech', 'funny', 'politics'],
   },
   {
     id: 2,
@@ -49,7 +49,7 @@ let gImgs = [
   {
     id: 10,
     url: 'imgs/10.jpg',
-    keywords: ['smile', 'funny', 'politic'],
+    keywords: ['smile', 'funny', 'politics'],
   },
   {
     id: 11,
@@ -84,12 +84,12 @@ let gImgs = [
   {
     id: 17,
     url: 'imgs/17.jpg',
-    keywords: ['animation', 'funny', 'classic'],
+    keywords: ['speech', 'funny', 'politics'],
   },
   {
     id: 18,
     url: 'imgs/18.jpg',
-    keywords: ['speech', 'funny', 'politic'],
+    keywords: ['animation', 'funny', 'classic'],
   },
 ]
 

@@ -11,7 +11,7 @@
   <body onload="onInit()">
     <!-- HEADER -->
     <header class="flex space-between">
-      <img src="imgs/LOGO.png" alt="logo" class="logo" />
+      <a href="#"><img src="imgs/LOGO.png" alt="logo" class="logo" /></a>
       <nav class="nav flex align-center">
         <a href="#">Home</a>
         <a href="#">Saved</a>
@@ -20,25 +20,29 @@
     </header>
 
     <!-- MAIN -->
-    <main class="gallery-main">
-      <section class="filter">
-        <input type="text" class="search-meme" />
-        <button class="randomMeme">🎲</button>
-        <input
-          type="file"
-          class="file-input"
-          name="image"
-          onchange="onImgUpload(event)"
-        />
-      </section>
-      <section
-        class="gallery-container flex flex-wrap justify-center"
-      ></section>
-    </main>
+    <section class="search-main">
+      <input
+        type="file"
+        class="file-input"
+        name="image"
+        onchange="onImgUpload(event)"
+      />
+      <input
+        oninput="onSearchInput()"
+        type="text"
+        placeholder="Search Image"
+        id="search-input"
+      />
+      <button>🎲</button>
+    </section>
+
+    <section class="gallery-main">
+      <div class="grid-container"></div>
+    </section>
 
     <!-- EDITOR -->
     <div class="main-screen full modal-bg" onclick="onToggleModal()"></div>
-    <section class="modal flex align-center space-around">
+    <section class="main-edit modal flex align-center space-around">
       <div class="cavnas-container">
         <canvas
           id="canvas"

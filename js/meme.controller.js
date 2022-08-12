@@ -44,6 +44,18 @@ function renderWebsiteImg(elImg) {
   gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
 }
 
+function uploadImage(ev, onImageReady) {
+  var reader = new FileReader()
+
+  reader.onload = (event) => {
+    var img = new Image()
+    img.src = event.target.result
+    img.onload = onImageReady.bind(null, img)
+  }
+
+  reader.readAsDataURL(ev.target.files[0])
+}
+
 function renderImg(img) {
   gUserImg = img
 
@@ -66,18 +78,6 @@ function renderImg(img) {
   )
 }
 
-function uploadImage(ev, onImageReady) {
-  var reader = new FileReader()
-
-  reader.onload = (event) => {
-    var img = new Image()
-    img.src = event.target.result
-    img.onload = onImageReady.bind(null, img)
-  }
-
-  reader.readAsDataURL(ev.target.files[0])
-}
-
 //*DONE - add line
 function renderText() {
   const meme = getMeme()
@@ -95,6 +95,27 @@ function renderText() {
   }
 }
 
+function drawText(x, y, color, strokeColor, size, strokeSize, text) {
+  gCtx.beginPath()
+  gCtx.font = `${size}px Impact `
+  gCtx.lineJoin = 'miter'
+  gCtx.miterLimit = 2
+  gCtx.fillStyle = color
+  gCtx.strokeStyle = strokeColor
+  gCtx.lineWidth = strokeSize
+  gCtx.strokeText(text, x, y)
+  gCtx.fill()
+  gCtx.fillText(text, x, y)
+  gCtx.closePath()
+}
+
+function onAddNewText() {
+  const elCanvas = document.querySelector('.canvas-container canvas')
+  const center = { x: elCanvas.width / 2, y: elCanvas.height / 2 }
+  newTextLine(center)
+  document.querySelector('.edit-text input').value = ''
+}
+
 //*DONE - change line input live
 function onTypingText() {
   const elText = document.querySelector('.text-edit input').value
@@ -103,14 +124,74 @@ function onTypingText() {
   addListeners()
   renderMeme()
 }
-//DOTO - change line focus
-//DOTO - remove line
-//DOTO - change font size
-//DOTO - change text align side
-//DOTO - change text color
-//DOTO - change stroke color
+
+//*DONE - change font size
+function onFontSizeUp() {
+  fontSizeUp()
+  renderMeme()
+}
+
+function onFontSizeDown() {
+  fontSizeDown()
+  renderMeme()
+}
+
+function onStrokeSizeUp() {
+  strokeSizeUp()
+  renderMeme()
+}
+
+function onStrokeSizeDown() {
+  strokeSizeDown()
+  renderMeme()
+}
+
+//*DONE - change text color
+function onFontColorChange() {
+  const elFontColorVal = document.querySelector('.font-color').value
+  fontColorChange(elFontColorVal)
+  renderMeme()
+}
+
+//*DONE - change stroke color
+function onStrokeColorChange() {
+  const elStrokeColorVal = document.querySelector('.stroke-color').value
+  strokeColorChange(elStrokeColorVal)
+  renderMeme()
+}
+
+//*DONE - change line focus
+function onChangeLine() {
+  changeTextFocus()
+  const currTextLine = getMeme().lines[gCurrLine].text
+  document.querySelector('.edit-text input').value = currTextLine
+}
+
+//*DONE - remove line
+function onDeleteText() {
+  const elCanvas = document.querySelector('.canvas-container canvas')
+  const center = { x: elCanvas.width / 2, y: elCanvas.height / 2 }
+  deleteText(center)
+  renderMeme()
+  const currTextLine = getMeme().lines[gCurrLine].text
+  document.querySelector('.edit-text input').value = currTextLine
+}
+
+//*DONE - add download onclick
+function onDownload() {
+  const elDownload = document.querySelector('.edit-download button a')
+  elDownload.download = 'meme.jpg'
+  elDownload.href = gElCanvas.toDataURL()
+}
+
+//*DONE - add save onclick
+function onSave() {
+  saveImg()
+}
+
+//*DONE - add share to facebook onclick
+function onShareToFacebook() {
+  shareImg()
+}
+
 //DOTO - add stickers functionality
-//DOTO - add download onclick
-//DOTO - add save onclick
-//DOTO - add share to facebook onclick
-//DOTO - drag text on cavnas

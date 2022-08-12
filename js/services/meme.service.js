@@ -99,6 +99,24 @@ function strokeColorChange(strokeColor) {
   gMeme.lines[gCurrLine].strokeColor = strokeColor
 }
 
+// handle text dragging //
+function isTextClicked(clickedPos) {
+  const { pos } = gMeme.lines[gCurrLine]
+  const distance = Math.sqrt(
+    (pos.x - clickedPos.x) ** 2 + (pos.y - clickedPos.y) ** 2
+  )
+  return distance <= 50
+}
+
+function setTextDrag(isDrag) {
+  gMeme.lines[gCurrLine].isDrag = isDrag
+}
+
+function moveText(dx, dy) {
+  gMeme.lines[gCurrLine].pos.x += dx
+  gMeme.lines[gCurrLine].pos.y += dy
+}
+
 //----------------------------------------Private functions - use only in this file!
 
 function _saveMemeToStorage() {

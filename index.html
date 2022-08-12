@@ -23,19 +23,21 @@
     <section class="home-main">
       <section class="search-main">
         <input
+          type="text"
+          id="search-input"
+          class="search-input"
+          placeholder="Search image to meme"
+          oninput="onSearchInput()"
+        />
+        <label for="file-upload" class="label-upload">📁 upload picture</label>
+        <input
           type="file"
+          id="file-upload"
           class="file-input"
           name="image"
           onchange="onImgUpload(event)"
         />
-        <input
-          oninput="onSearchInput()"
-          type="text"
-          placeholder="Search Image"
-          id="search-input"
-          class="search-input"
-        />
-        <button onclick="onInit()" class="reset-filter">reset</button>
+        <button onclick="onInit()" class="reset-filter">🔄 reset</button>
         <div class="search-keywords flex justify-center align-center"></div>
       </section>
 

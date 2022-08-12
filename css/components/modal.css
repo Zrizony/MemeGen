@@ -1,6 +1,6 @@
 /* MODAL */
 .modal {
-  background-image: url('/imgs/editor-bg.png');
+  background-image: url('/imgs/backgrounds/editor-bg.png');
   background-color: var(--color1);
   color: var(--color2);
   padding: 10px;

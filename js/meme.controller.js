@@ -3,10 +3,10 @@
 let gElCanvas
 let gCtx
 let gStartPos
-let gUserImg
+let gUploadImg
 
-const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 const gElCanvasContainer = document.querySelector('.canvas-container')
+const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
 //---- opening editor modal ----//
 function onToggleModal() {
@@ -38,9 +38,7 @@ function uploadImage(ev, onImageReady) {
 }
 
 function renderImg(img) {
-  gUserImg = img
-  console.log('img:', img)
-  console.log('gUserImg:', gUserImg)
+  gUploadImg = img
 
   let wRatio = gElCanvas.width / img.width
   let hRatio = gElCanvas.height / img.height
@@ -63,16 +61,14 @@ function renderImg(img) {
 
 function renderMeme() {
   const currMeme = getMeme()
-  console.log('currmeme:', currMeme)
 
-  const elImg = document.getElementById(`img${currMeme.selectedImgId.id}`)
-  console.log('elImg', elImg)
+  const elImg = document.getElementById(`img${currMeme.selectedImgId}`)
 
-  renderImg(gUserImg)
-  // if (!elImg) {
-  // } else {
-  //   renderWebsiteImg(elImg)
-  // }
+  if (!elImg) {
+    renderImg(gUploadImg)
+  } else {
+    renderWebsiteImg(elImg)
+  }
 
   onRenderText()
 
@@ -94,8 +90,6 @@ function onRenderText() {
       newText.pos.x,
       newText.pos.y
     )
-    console.log('meme:', meme)
-    console.log('newText:', newText)
   }
 }
 

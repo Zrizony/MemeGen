@@ -9,7 +9,7 @@ var gCurrText
 function createMeme(imgId, pos) {
   gCurrText = 0
   gMeme = {
-    selectedImgId: imgId,
+    selectedImgId: imgId.id,
     selectedLineIdx: gCurrText,
     lines: [
       {

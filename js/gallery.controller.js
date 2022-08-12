@@ -19,7 +19,6 @@ function onSearchInput() {
 //---- rendering gallery ----//
 function renderGallery() {
   // const currSearchValue = document.getElementById('search-input').value
-  // console.log('currSearchValue:', currSearchValue)
   let imgs = getImgForDisplay()
   // if (!currSearchValue) {
   //   imgs = getImgForDisplay()
@@ -34,14 +33,14 @@ function renderGallery() {
     `
   )
 
-  console.log(imgs)
   document.querySelector('.grid-container').innerHTML = strHtmls.join('')
 }
 
 //---- opening meme editor modal with selected image ----//
 function onImgSelect(imgId) {
-  const img = getImgById(imgId)
   const elCanvas = document.getElementById('canvas')
+  const img = getImgById(imgId)
+
   const center = { x: elCanvas.width / 2, y: elCanvas.height / 2 }
   createMeme(img, center)
   renderMeme()
@@ -61,6 +60,9 @@ function onImgUpload(ev) {
   const center = { x: elCanvas.width / 2, y: elCanvas.height / 2 }
   createMeme(0, center)
   uploadImage(ev, renderImg)
+
+  const elModal = document.querySelector('.modal')
+  elModal.classList.add('open')
 }
 
 //---- loading images by search keyword ----//

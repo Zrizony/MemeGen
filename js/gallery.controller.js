@@ -1,6 +1,9 @@
 'use strict'
 
 function onInit() {
+  gElCanvas = document.getElementById('canvas')
+  gCtx = canvas.getContext('2d')
+
   renderGallery()
 }
 
@@ -25,6 +28,18 @@ function onImgSelect(imgId) {
   elModal.classList.add('open')
 }
 
+//---- closing meme editor modal ----//
 function onCloseModal() {
   document.querySelector('.modal').classList.remove('open')
+}
+
+function onImgUpload(ev) {
+  const elCanvas = document.querySelector('.canvas-container canvas')
+  const center = { x: elCanvas.width / 2, y: elCanvas.height / 2 }
+  setNewMeme(0, center)
+  loadImageFromInput(ev, renderImg)
+
+  elSearchContainer.style.display = 'none'
+  elMainGallery.style.display = 'none'
+  elMainEdit.style.display = 'flex'
 }

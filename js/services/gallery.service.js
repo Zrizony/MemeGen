@@ -101,6 +101,16 @@ function getImgForDisplay() {
 function getImgById(imgId) {
   const imgs = gImgs
   let img = imgs.find((el) => el.id == imgId)
-
   return img
+}
+
+function getImgBySearchFilter(val) {
+  let imgs = gImgs.filter((img) =>
+    img.keywords.find((element) => {
+      if (element.includes(val)) {
+        return true
+      }
+    })
+  )
+  return imgs
 }

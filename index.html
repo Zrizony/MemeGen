@@ -20,11 +20,16 @@
     </header>
 
     <!-- MAIN -->
-    <main class="">
+    <main class="gallery-main">
       <section class="filter">
-        <input type="text" />
+        <input type="text" class="search-meme" />
         <button class="randomMeme">🎲</button>
-        <button>test</button>
+        <input
+          type="file"
+          class="file-input"
+          name="image"
+          onchange="onImgUpload(event)"
+        />
       </section>
       <section
         class="gallery-container flex flex-wrap justify-center"
@@ -34,37 +39,41 @@
     <!-- EDITOR -->
     <div class="main-screen full modal-bg" onclick="onToggleModal()"></div>
     <section class="modal flex align-center space-around">
-      <canvas
-        id="canvas"
-        class="meme-canvas"
-        width="500px"
-        height="500px"
-      ></canvas>
+      <div class="cavnas-container">
+        <canvas
+          id="canvas"
+          class="meme-canvas"
+          width="500px"
+          height="500px"
+        ></canvas>
+      </div>
       <section class="meme-editor">
         <!----------- text control ----------->
-        <input
-          type="text"
-          class="meme-text"
-          placeholder="memiest text ever"
-          onchange="renderText()"
-          value=""
-        />
-        <button class="btn btn-modal btn-line-focus">🔄</button>
-        <button class="btn btn-modal btn-add-line">➕</button>
-        <button class="btn btn-modal btn-delete-line">❌</button>
+        <div class="text-edit">
+          <input
+            type="text"
+            class="meme-text"
+            placeholder="memiest text ever"
+            oninput="renderText()"
+            value=""
+          />
+        </div>
+        <button class="btn-modal btn-add-line">➕</button>
+        <button class="btn-modal btn-change-focus">🔄</button>
+        <button class="btn-modal btn-delete-line">❌</button>
         <!----------- font settings ----------->
         <section class="meme-font">
-          <button class="btn btn-modal btn-increase-font">A+</button>
-          <button class="btn btn-modal btn-decrease-font">A-</button>
-          <button class="btn btn-modal btn-align-left">
-            <i class="fas fa-align-left"></i>
-          </button>
-          <button class="btn btn-modal btn-align-center">center</button>
-          <button class="btn btn-modal btn-align-right">right</button>
-          <label for="stroke-color">stroke color</label>
-          <input type="color" class="stroke-color" />
+          <button class="btn-modal btn-font-up">A+</button>
+          <button class="btn-modal btn-font-down">A-</button>
+          <button class="btn-modal btn-stroke-up">S+</button>
+          <button class="btn-modal btn-stroke-down">S-</button>
+          <button class="btn-modal btn-align-left">left</button>
+          <button class="btn-modal btn-align-center">center</button>
+          <button class="btn-modal btn-align-right">right</button>
           <label for="font-color">font color</label>
           <input type="color" class="font-color" />
+          <label for="stroke-color">stroke color</label>
+          <input type="color" class="stroke-color" />
         </section>
         <!----------- stickers ----------->
         <section class="meme-stickers">

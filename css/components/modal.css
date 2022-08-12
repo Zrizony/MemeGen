@@ -24,6 +24,11 @@
   height: 100%;
 }
 
+.canvas-container {
+  width: 666px;
+  height: 666px;
+}
+
 .meme-editor {
   width: 500px;
   height: 500px;

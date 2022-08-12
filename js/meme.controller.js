@@ -2,51 +2,107 @@
 
 var gElCanvas
 var gCtx
-const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
+var gStartPos
+var gUserImg
 
-//---- opening editor modal
+const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
+const gElCanvasContainer = document.querySelector('.canvas-container')
+
+//---- opening editor modal ----//
 function onToggleModal() {
   const modal = document.querySelector('.modal')
   modal.classList.toggle('open')
 }
 
-//---- rendering selected img into canvas
-function renderMeme() {
-  gElCanvas = document.getElementById('canvas')
-  gCtx = canvas.getContext('2d')
+//---- self explanatory ----//
+function resizeCanvas() {
+  gElCanvas.width = gElCanvasContainer.offsetWidth
+  gElCanvas.height = gElCanvasContainer.offsetHeight
+}
 
+//---- rendering selected img into canvas ----//
+function renderMeme() {
   //-- meme object
-  const meme = getMeme()
-  console.log(' meme:', meme)
+  const currMeme = getMeme()
 
   //-- img HTML
-  const elImg = document.querySelector(`.img${meme.selectedImgId}`)
-  console.log(' elMeme:', elImg)
+  const elImg = document.querySelector(`.img${currMeme.selectedImgId}`)
 
   //-- img into cavnas
-  gCtx.drawImage(elImg, 1, 1, elImg.width, elImg.height)
+  if (!elImg) {
+    //-- render img uploaded by the user
+    renderImg(gUserImg)
+  } else {
+    //--render img chosen from the website stock
+    renderWebsiteImg(elImg)
+  }
+
+  renderText()
+}
+
+function renderWebsiteImg(elImg) {
+  gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+}
+
+function renderImg(img) {
+  gUserImg = img
+
+  const hRatio = gElCanvas.width / img.width
+  const vRatio = gElCanvas.height / img.height
+  const ratio = Math.min(hRatio, vRatio)
+  var centerShift_x = (gElCanvas.width - img.width * ratio) / 2
+  var centerShift_y = (gElCanvas.height - img.height * ratio) / 2
+  gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
+  gCtx.drawImage(
+    img,
+    0,
+    0,
+    img.width,
+    img.height,
+    centerShift_x,
+    centerShift_y,
+    img.width * ratio,
+    img.height * ratio
+  )
+}
+
+function uploadImage(ev, onImageReady) {
+  var reader = new FileReader()
+
+  reader.onload = (event) => {
+    var img = new Image()
+    img.src = event.target.result
+    img.onload = onImageReady.bind(null, img)
+  }
+
+  reader.readAsDataURL(ev.target.files[0])
+}
+
+//*DONE - add line
+function renderText() {
+  const meme = getMeme()
+  for (let i = 0; i < meme.lines.length; i++) {
+    const newText = meme.lines[i]
+    drawText(
+      newText.pos.x,
+      newText.pos.y,
+      newText.color,
+      newText.strokeColor,
+      newText.size,
+      newText.strokeSize,
+      newText.text
+    )
+  }
 }
 
 //*DONE - change line input live
-//*DONE - add line
-function renderText() {
-  gElCanvas = document.getElementById('canvas')
-  gCtx = canvas.getContext('2d')
+function onTypingText() {
+  const elText = document.querySelector('.text-edit input').value
 
-  let txt = createText()
-
-  gCtx.font = '3rem Impact'
-  gCtx.textAlign = 'center'
-  gCtx.textBaseline = 'middle'
-  gCtx.fillStyle = 'white'
-  gCtx.fillText(txt, gElCanvas.width / 2, gElCanvas.height / 2)
-  gCtx.strokeStyle = 'black'
-  gCtx.strokeText(txt, gElCanvas.width / 2, gElCanvas.height / 2)
-
-  gCurrText++
-  document.querySelector('.meme-text').value = ''
+  createText(elText, gCurrLine)
+  addListeners()
+  renderMeme()
 }
-
 //DOTO - change line focus
 //DOTO - remove line
 //DOTO - change font size

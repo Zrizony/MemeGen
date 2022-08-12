@@ -3,49 +3,100 @@
 const STORAGE_KEY = 'memeDB'
 
 var gMeme
-var gCurrText = 0
+var gCurrText
 
-function createMeme(selectedImgId) {
+//---- create single meme ----//
+function createMeme(imgId, pos) {
+  gCurrText = 0
   gMeme = {
-    selectedImgId,
-    selectedLineIdx: 0,
+    selectedImgId: imgId,
+    selectedLineIdx: gCurrText,
     lines: [
       {
         txt: '',
-        size: 20,
-        align: 'left',
-        fillText: 'white',
-        strokeText: 'black',
+        size: 40,
+        strokeSize: 8,
+        textColor: 'white',
+        strokeColor: 'black',
         onFocus: false,
         isDrag: false,
+        pos,
       },
     ],
   }
 }
 
+//---- get meme to render safely ----//
 function getMeme() {
-  return gMeme
+  const meme = gMeme
+  return meme
 }
 
 //------------Text Settings------------//
-function createText() {
-  gMeme.lines[gCurrText].txt = document.querySelector('.meme-text').value
+function createText(memeText, selectedLineIdx) {
+  gMeme.lines[selectedLineIdx].text = memeText
+}
 
-  let text = gMeme.lines[gCurrText].txt
-  console.log('text:', text)
-
-  gMeme.lines.push({
+function newTextLine(pos) {
+  let newText = {
     txt: '',
-    size: 20,
-    align: 'left',
-    fillText: 'white',
-    strokeText: 'black',
+    align: 'center',
+    size: 40,
+    strokeSize: 8,
+    textColor: 'white',
+    strokeColor: 'black',
     onFocus: false,
     isDrag: false,
-  })
-  console.log('gMeme.lines:', gMeme.lines)
+    pos,
+  }
 
-  return text
+  gMeme.lines.push(newText)
+  gCurrText++
+}
+
+function changeTextFocus() {
+  if (gCurrLine === gMeme.lines.length - 1) {
+    gCurrLine = 0
+  } else {
+    gCurrLine++
+  }
+}
+
+function deleteText(pos) {
+  if (gMeme.lines.length === 1) {
+    gMeme.lines[gCurrLine].text = ''
+    gMeme.lines[gCurrLine].pos = pos
+    document.querySelector('.edit-text input').value = ''
+    return
+  }
+  gMeme.lines.splice(gCurrLine, 1)
+  if (!gCurrLine === 0) gCurrLine--
+}
+
+function fontSizeUp() {
+  gMeme.lines[gCurrLine].size += 2
+}
+
+function fontSizeDown() {
+  if (!gMeme.lines[gCurrLine].size === 10) gMeme.lines[gCurrLine].size -= 2
+}
+
+function strokeSizeUp() {
+  gMeme.lines[gCurrLine].strokeSize += 1
+}
+
+function strokeSizeDown() {
+  if (!gMeme.lines[gCurrLine].strokeSize === 0) {
+    gMeme.lines[gCurrLine].strokeSize -= 1
+  }
+}
+
+function fontColorChange(fontColor) {
+  gMeme.lines[gCurrLine].color = fontColor
+}
+
+function strokeColorChange(strokeColor) {
+  gMeme.lines[gCurrLine].strokeColor = strokeColor
 }
 
 //----------------------------------------Private functions - use only in this file!

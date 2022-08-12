@@ -10,7 +10,7 @@
   </head>
   <body onload="onInit()">
     <!-- HEADER -->
-    <header class="flex space-between">
+    <header class="header-main flex space-between">
       <a href="#"><img src="imgs/LOGO.png" alt="logo" class="logo" /></a>
       <nav class="nav flex align-center">
         <a href="#" onclick="onInit()">Home</a>
@@ -20,29 +20,32 @@
     </header>
 
     <!-- MAIN -->
-    <section class="search-main">
-      <input
-        type="file"
-        class="file-input"
-        name="image"
-        onchange="onImgUpload(event)"
-      />
-      <input
-        oninput="onSearchInput()"
-        type="text"
-        placeholder="Search Image"
-        id="search-input"
-      />
-      <button onclick="onInit()">reset</button>
-      <div class="search-keywords flex justify-center align-center"></div>
-    </section>
+    <section class="home-main">
+      <section class="search-main">
+        <input
+          type="file"
+          class="file-input"
+          name="image"
+          onchange="onImgUpload(event)"
+        />
+        <input
+          oninput="onSearchInput()"
+          type="text"
+          placeholder="Search Image"
+          id="search-input"
+          class="search-input"
+        />
+        <button onclick="onInit()" class="reset-filter">reset</button>
+        <div class="search-keywords flex justify-center align-center"></div>
+      </section>
 
-    <section class="gallery-main">
-      <div class="grid-container"></div>
+      <section class="gallery-main">
+        <div class="grid-container"></div>
+      </section>
     </section>
 
     <!-- EDITOR -->
-    <div class="main-screen full modal-bg" onclick="onToggleModal()"></div>
+    <div class="edit-bg-main full modal-bg" onclick="onToggleModal()"></div>
     <section class="edit-main modal flex align-center space-around">
       <div class="canvas-container">
         <canvas
@@ -132,7 +135,9 @@
     <div class="flash-msg"></div>
 
     <!-- ABOUT -->
-    <section class="about-main"></section>
+    <section class="about-main">
+      <h1>About</h1>
+    </section>
 
     <!-- FOOTER -->
     <footer>

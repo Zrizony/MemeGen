@@ -1,13 +1,29 @@
-/* .grid-container {
-  background-color: transparent;
-  max-width: 1200px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-row: repeat(5, 1fr);
-  padding: 20px 0;
-  margin: 0 auto;
-  gap: 1rem;
-} */
+.grid-container {
+    max-width: var(--small);
+    margin-left: auto;
+    margin-right: auto;
+    background-color: transparent;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 20px 0;
+    margin: 0 auto;
+    gap: 1rem;
+  }
+
+  .gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    transform: scale(100%);
+    transition: transform 0.3s;
+  }
+  .gallery-img:hover {
+    transform: scale(110%);
+    transition: transform 0.3s;
+  }
 
 /* SMAll */
 
@@ -20,10 +36,23 @@
     max-width: 1200px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-row: repeat(5, 1fr);
     padding: 20px 0;
     margin: 0 auto;
     gap: 1rem;
+  }
+
+  .gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    transform: scale(100%);
+    transition: transform 0.3s;
+  }
+  .gallery-img:hover {
+    transform: scale(110%);
+    transition: transform 0.3s;
   }
 }
 
@@ -34,12 +63,43 @@
     margin-right: auto;
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    transform: scale(100%);
+    transition: transform 0.3s;
+  }
+  .gallery-img:hover {
+    transform: scale(110%);
+    transition: transform 0.3s;
+  }
 }
 
 @media (min-width: 1040px) {
   .grid-container {
+    max-width: unset;
     margin-left: auto;
     margin-right: auto;
+    padding: 2rem;
+    gap: 2rem;
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  .gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    transform: scale(100%);
+    transition: transform 0.3s;
+  }
+  .gallery-img:hover {
+    transform: scale(110%);
+    transition: transform 0.3s;
   }
 }

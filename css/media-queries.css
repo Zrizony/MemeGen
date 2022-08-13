@@ -24,6 +24,14 @@
   .nav-links.active {
     display: flex;
   }
+  
+  /* FILTER */
+  .search-keywords {
+    flex-wrap: wrap;
+  }
+  .search-main {
+    flex-direction: column;
+  }
 
   /* EDITOR */
   .canvas-container {

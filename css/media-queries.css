@@ -229,7 +229,7 @@
 @media (min-width: 1040px) {
   /* HEADER */
   .logo {
-    width: 40ch;
+    width: 70%;
   }
 
   .clean-list {

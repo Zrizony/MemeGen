@@ -73,5 +73,36 @@
 }
 
 .keywords {
-  flex-flow: 1;
+  flex-wrap: wrap;
+}
+
+.keyword {
+  flex-grow: 1;
+}
+
+.grid-container {
+  max-width: var(--small);
+  margin-left: auto;
+  margin-right: auto;
+  background-color: transparent;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 20px 0;
+  margin: 0 auto;
+  gap: 1rem;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+  transform: scale(100%);
+  transition: transform 0.3s;
+}
+.gallery-img:hover {
+  transform: scale(110%);
+  transition: transform 0.3s;
 }

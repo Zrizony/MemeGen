@@ -11,22 +11,39 @@
 
   <body onload="onInit()">
     <!-- HEADER -->
-    <header class="header-main flex space-between">
-      <a href="#"><img src="imgs/LOGO.png" alt="logo" class="logo" onclick="onInit()" /></a>
-      <nav class="nav flex align-center">
-        <a href="#" onclick="onInit()">home</a>
-        <a href="#" onclick="onSavedClick()">saved</a>
-        <a href="#" onclick="onOpenAbout()">about</a>
+    <header class="header-main">
+      <nav class="nav">
+        
+        <a href="#" onclick="onInit()">
+          <img src="imgs/LOGO.png" alt="logo" class="logo" />
+        </a>
+      
+        <a href="#" class="nav-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </a>
+
+        <div class="nav-links">
+          <ul>
+            <li><a onclick="onInit()">home</a></li>
+            <li><a onclick="onSavedClick()">save</a></li>
+            <li><a onclick="onOpenAbout()">about</a></li>
+           </ul>
+        </div>
+
       </nav>
     </header>
 
     <!-- MAIN -->
     <section class="home-main">
       <section class="search-main">
-        <input type="text" id="search-input" class="search-input" placeholder="search image" oninput="onSearchInput()"/>
-        <label for="file-upload" class="label-upload">📁 upload picture</label>
-        <input type="file" id="file-upload" class="file-input" name="image" onchange="onImgUpload(event)" />
-        <button onclick="onInit()" class="reset-filter">🔄 reset</button>
+        <div class="search-inputs">
+          <input type="text" id="search-input" class="search-input" placeholder="search image" oninput="onSearchInput()"/>
+          <label for="file-upload" class="label-upload">📁 upload picture</label>
+          <input type="file" id="file-upload" class="file-input" name="image" onchange="onImgUpload(event)" />
+          <button onclick="onInit()" class="reset-filter">reset filter</button>
+        </div>
         <div class="search-keywords flex justify-center align-center"></div>
       </section>
 

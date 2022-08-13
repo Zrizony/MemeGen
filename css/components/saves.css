@@ -1,11 +1,16 @@
 /* SAVES */
+.saved-main {
+  background-image: url('/imgs/backgrounds/gallery-bg.png');
+}
+
 .saved-memes {
   width: 100%;
   height: 100%;
   display: grid; /* none when gallery is shown */
+  background-color: transparent;
 }
 
-.saved-container {
+.saved-memes-container {
   background-color: transparent;
   display: grid;
   padding: 20px 0;

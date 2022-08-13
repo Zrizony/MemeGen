@@ -4,6 +4,7 @@ const elSearchContainer = document.querySelector('.search-main')
 const elMainGallery = document.querySelector('.gallery-main')
 const elMainEdit = document.querySelector('.edit-main')
 const elMainSaved = document.querySelector('.saved-main')
+
 const elSearch = document.querySelector('#search-input')
 
 let fontSizes
@@ -145,3 +146,17 @@ function onSearchSubmit(e) {
 
   elSearch.value = ''
 }
+
+//---- toggle navbar at mobile mode ----//
+const elNavBar = document.querySelector('.nav-toggle')[0]
+const elNavLinks = document.querySelector('.nav-links')[0]
+
+elNavBar.addEventListener('click', () => {
+    elNavLinks.classList.toggle('active')
+  })
+
+  // function onToggleNavBar() {
+  
+  //   elNavLinks.classList.add('.active')
+  //   console.log('elNavLinks:', elNavLinks);
+  // }

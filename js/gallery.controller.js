@@ -4,7 +4,8 @@ const elSearchContainer = document.querySelector('.search-main')
 const elMainGallery = document.querySelector('.gallery-main')
 const elMainEdit = document.querySelector('.edit-main')
 const elMainSaved = document.querySelector('.saved-main')
-
+const elNavBar = document.getElementsByClassName('nav-toggle')[0]
+const elNavLinks = document.getElementsByClassName('nav-links')[0]
 const elSearch = document.querySelector('#search-input')
 
 let fontSizes
@@ -18,6 +19,8 @@ function onInit() {
   elSearchContainer.style.display = 'flex'
   elMainGallery.style.display = 'grid'
   elMainSaved.style.display = 'none'
+
+  elNavLinks.classList.remove('active')
 
   resizeCanvas()
   createKeyWords()
@@ -148,15 +151,8 @@ function onSearchSubmit(e) {
 }
 
 //---- toggle navbar at mobile mode ----//
-const elNavBar = document.getElementsByClassName('nav-toggle')[0]
-const elNavLinks = document.getElementsByClassName('nav-links')[0]
+
 
 elNavBar.addEventListener('click', () => {
     elNavLinks.classList.toggle('active')
   })
-
-  // function onToggleNavBar() {
-  
-  //   elNavLinks.classList.add('.active')
-  //   console.log('elNavLinks:', elNavLinks);
-  // }

@@ -2,6 +2,7 @@
 
 //---- opening about modal ----//
 function onOpenAbout() {
+    elNavLinks.classList.remove('active')
     document.querySelector('.about-modal').classList.add('open')
 }
 

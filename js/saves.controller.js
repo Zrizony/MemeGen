@@ -2,6 +2,7 @@
 // Save Memes //
 
 function onSavedClick() {
+    elNavLinks.classList.remove('active')
     renderSavedMemes()
 }
 

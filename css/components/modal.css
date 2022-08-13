@@ -45,10 +45,6 @@
   -webkit-text-fill-color: white;
 }
 
-.font-color {
-  width: 30px;
-}
-
 .btn-modal {
   -webkit-border-radius: 10;
   -moz-border-radius: 10;
@@ -57,9 +53,11 @@
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color: #ffffff;
   font-size: 1rem;
-  background: #3498db;
+  background: var(--color4);
   /* padding: 10px 20px 10px 20px; */
   text-decoration: none;
+  -webkit-text-stroke: 1px black;
+  -webkit-text-fill-color: white;
 }
 
 .btn-download a{
@@ -70,17 +68,18 @@
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   color: #ffffff;
   font-size: 1rem;
-  background: #3498db;
+  background: var(--color4);
   /* padding: 10px 20px 10px 20px; */
   text-decoration: none;
+  -webkit-text-stroke: 1px black;
+  -webkit-text-fill-color: white;
+}
+
+.btn-close {
+  font-size: 2rem;
 }
 
 .btn-modal:hover {
-  background: #3cb0fd;
-  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  background: var(--color6);
   text-decoration: none;
 }

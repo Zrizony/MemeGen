@@ -9,17 +9,17 @@ let gImgs = [
   {
     id: 2,
     url: 'imgs/2.jpg',
-    keywords: ['reletable', 'trend', 'kiss'],
+    keywords: ['reletable', 'trend', 'drown'],
   },
   {
     id: 3,
     url: 'imgs/3.jpg',
-    keywords: ['cute', 'puppy', 'baby'],
+    keywords: ['spongebob', 'discover', 'cartoon'],
   },
   {
     id: 4,
     url: 'imgs/4.jpg',
-    keywords: ['cat', 'funny', 'sleep'],
+    keywords: ['two panel', 'talk', 'funny'],
   },
   {
     id: 5,
@@ -34,7 +34,7 @@ let gImgs = [
   {
     id: 7,
     url: 'imgs/7.jpg',
-    keywords: ['nigger', 'funny', 'baby'],
+    keywords: ['two panel', 'funny', 'catroon'],
   },
   {
     id: 8,
@@ -44,12 +44,12 @@ let gImgs = [
   {
     id: 9,
     url: 'imgs/9.jpg',
-    keywords: ['baby', 'funny', 'cute'],
+    keywords: ['vehicle', 'two panel', 'choice'],
   },
   {
     id: 10,
     url: 'imgs/10.jpg',
-    keywords: ['smile', 'funny', 'politics'],
+    keywords: ['anime', 'funny', 'run'],
   },
   {
     id: 11,
@@ -59,7 +59,7 @@ let gImgs = [
   {
     id: 12,
     url: 'imgs/12.jpg',
-    keywords: ['old', 'funny', 'classic'],
+    keywords: ['two panel', 'choice', 'classic'],
   },
   {
     id: 13,
@@ -84,7 +84,7 @@ let gImgs = [
   {
     id: 17,
     url: 'imgs/17.jpg',
-    keywords: ['speech', 'funny', 'politics'],
+    keywords: ['bad', 'funny', 'dark humor'],
   },
   {
     id: 18,

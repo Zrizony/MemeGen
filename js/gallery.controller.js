@@ -85,7 +85,7 @@ function renderKeywords() {
 function createKeyWords() {
   let newFontSizes = loadFromStorage('keywordsDB') || null
   if (!newFontSizes) {
-    newFontSizes = { classic: 55, movie: 15, politics: 60, funny: 30 }
+    newFontSizes = { spongebob: 50, movie: 30, classic: 60, funny: 40 }
   }
   fontSizes = newFontSizes
   saveToStorage('keywordsDB', fontSizes)

@@ -40,9 +40,23 @@
   gap: 5px;
 }
 
+.meme-editor .btn-modal {
+  padding: 10px 30px;
+  margin: 0 3rem;
+}
+
+.fonts-sizes .btn-modal {
+  padding: 10px 30px;
+  margin-bottom: 10px;
+}
+
 .colors {
   -webkit-text-stroke: 1px black;
   -webkit-text-fill-color: white;
+}
+
+.meme-social .btn {
+  padding: 10px 30px;
 }
 
 .btn-modal {

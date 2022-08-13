@@ -14,9 +14,9 @@
     <header class="header-main flex space-between">
       <a href="#"><img src="imgs/LOGO.png" alt="logo" class="logo" /></a>
       <nav class="nav flex align-center">
-        <a href="#" onclick="onInit()">Home</a>
-        <a href="#" onclick="onSavedClick()">Saved</a>
-        <a href="#" onclick="openAbout()">About</a>
+        <a href="#" onclick="onInit()">home</a>
+        <a href="#" onclick="onSavedClick()">saved</a>
+        <a href="#" onclick="openAbout()">about</a>
       </nav>
     </header>
 
@@ -66,16 +66,14 @@
         </section>
         <!----------- social ----------->
         <section class="meme-social">
-          <div class="download-edit">
-            <button class="btn btn-modal btn-download" onclick="onDownload()">
-              <a href="">Download</a>
-            </button>
-          </div>
-          <button class="btn btn-modal btn-save" onclick="onToggleModal()">
-            save
+          <button class="btn btn-modal btn-download" onclick="onDownload()">
+            <a href="">download</a>
           </button>
-          <button class="btn btn-modal btn-share" onclick="onImgUpload(ev)">share</button>
+          <button class="btn btn-modal btn-save" onclick="onSave()">save</button>
+          <button class="btn btn-modal btn-share" onclick="onShareToFacebook()">share</button>
         </section>
+        <!----------- close editor ----------->
+        <button class="btn btn-modal btn-close" onclick="onCloseModal()">close</button>
       </section>
     </section>
 

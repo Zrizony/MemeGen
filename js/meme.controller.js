@@ -14,7 +14,7 @@ function onToggleModal() {
   modal.classList.toggle('open')
 }
 
-//---- self explanatory ----//
+//---- changing canvas size to fit image size ----//
 function resizeCanvas() {
   gElCanvas.width = gElCanvasContainer.offsetWidth
   gElCanvas.height = gElCanvasContainer.offsetHeight
@@ -61,6 +61,7 @@ function renderImg(img) {
   )
 }
 
+//-- rendering meme on canvas
 function renderMeme() {
   const currMeme = getMeme()
 
@@ -74,7 +75,7 @@ function renderMeme() {
   renderText()
 }
 
-//*DONE - add line
+//-- rendering text
 function renderText() {
   const meme = getMeme()
   for (let i = 0; i < meme.lines.length; i++) {
@@ -91,6 +92,7 @@ function renderText() {
   }
 }
 
+//-- setting default text look and changing it by user onclicks
 function drawText(x, y, TextColor, strokeColor, size, strokeSize, text) {
   gCtx.beginPath()
   gCtx.font = `${size}px Impact `
@@ -106,6 +108,8 @@ function drawText(x, y, TextColor, strokeColor, size, strokeSize, text) {
 }
 
 //---- Editor onclicks ----//
+
+//-- adding new text line
 function onAddNewText() {
   const elCanvas = document.querySelector('.canvas-container canvas')
   const center = { x: elCanvas.width / 2, y: elCanvas.height / 2 }
@@ -113,7 +117,7 @@ function onAddNewText() {
   document.querySelector('.text-edit input').value = ''
 }
 
-//*DONE - change line input live
+//-- rendering text on meme on input
 function onTypingText() {
   const elText = document.querySelector('.text-edit input').value
 
@@ -122,7 +126,7 @@ function onTypingText() {
   renderMeme()
 }
 
-//*DONE - change font size
+//-- change font size
 function onFontSizeUp() {
   fontSizeUp()
   renderMeme()
@@ -133,6 +137,7 @@ function onFontSizeDown() {
   renderMeme()
 }
 
+//-- change stroke size
 function onStrokeSizeUp() {
   strokeSizeUp()
   renderMeme()
@@ -143,28 +148,28 @@ function onStrokeSizeDown() {
   renderMeme()
 }
 
-//*DONE - change text color
+//-- change font color
 function onFontColorChange() {
   const elFontColorVal = document.querySelector('.font-color').value
   fontColorChange(elFontColorVal)
   renderMeme()
 }
 
-//*DONE - change stroke color
+//-- change stroke color
 function onStrokeColorChange() {
   const elStrokeColorVal = document.querySelector('.stroke-color').value
   strokeColorChange(elStrokeColorVal)
   renderMeme()
 }
 
-//*DONE - change line focus
+//-- change text line focus
 function onChangeLine() {
   changeTextFocus()
   const currTextLine = getMeme().lines[gCurrLine].txt
   document.querySelector('.text-edit input').value = currTextLine
 }
 
-//*DONE - remove line
+//-- delete focused text line
 function onDeleteText() {
   const elCanvas = document.getElementById('canvas')
   const center = { x: elCanvas.width / 2, y: elCanvas.height / 2 }
@@ -174,20 +179,20 @@ function onDeleteText() {
   document.querySelector('.text-edit input').value = currTextLine
 }
 
-//*DONE - add download onclick
+//-- download meme
 function onDownload() {
-  const elDownload = document.querySelector('.edit-download button a')
+  const elDownload = document.querySelector('.btn-download a')
   elDownload.download = 'meme.jpg'
   elDownload.href = gElCanvas.toDataURL()
 }
 
-//*DONE - add save onclick
+//-- save meme
 function onSave() {
   saveImg()
   flashMsg('Saved meme')
 }
 
-//*DONE - add share to facebook onclick
+//-- share meme to facebook
 function onShareToFacebook() {
   shareImg()
 }

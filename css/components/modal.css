@@ -1,7 +1,7 @@
 /* MODAL */
 .modal {
   background-color: var(--color1);
-  background-image: url('/imgs/backgrounds/editor-bg.jpg');
+  background-image: url('../../imgs/backgrounds/editor-bg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   color: var(--color2);

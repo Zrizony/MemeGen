@@ -3,8 +3,7 @@
 const elSearchContainer = document.querySelector('.search-main')
 const elMainGallery = document.querySelector('.gallery-main')
 const elMainEdit = document.querySelector('.edit-main')
-const elMainSaved = document.querySelector('.saves-main')
-const elMainAbout = document.querySelector('.about-main')
+const elMainSaved = document.querySelector('.saved-main')
 const elSearch = document.querySelector('#search-input')
 
 let fontSizes
@@ -14,6 +13,11 @@ function onInit() {
   elSearch.value = ''
   gElCanvas = document.getElementById('canvas')
   gCtx = canvas.getContext('2d')
+
+  elSearchContainer.style.display = 'flex'
+  elMainGallery.style.display = 'grid'
+  elMainSaved.style.display = 'none'
+
   resizeCanvas()
   createKeyWords()
   renderKeywords()

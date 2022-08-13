@@ -1,6 +1,6 @@
 'use strict'
 
-const STORAGE_KEY = 'memesDB'
+const STORAGE_KEY = 'memeDB'
 
 let gSavedMeme = loadFromStorage(STORAGE_KEY) || []
 
@@ -71,7 +71,6 @@ function getImgUrl(uploadedImgUrl) {
   const newStr = uploadedImgUrl.split('id=')
   let newUrl =
     'http://ca-upload.com/here/img/' + newStr[newStr.length - 1] + '.jpg'
-  console.log(newUrl)
 
   return newUrl
 }

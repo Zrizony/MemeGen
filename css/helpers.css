@@ -34,3 +34,9 @@
   padding: 0;
   list-style-type: none;
 }
+
+/* spreading container to fullscreen */
+.full {
+  width: 100%;
+  height: 100%;
+}

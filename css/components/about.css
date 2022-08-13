@@ -1,1 +1,29 @@
 /* ABOUT */
+.about-modal {
+    background-color: var(--color1);
+    background-image: url('/imgs/backgrounds/editor-bg.png');
+    padding: 10px;
+    position: fixed;
+    top: -100%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 90vw;
+    height: 90vh;
+    min-width: 300px;
+    text-align: center;
+  }
+  
+  .about-modal.open {
+    position: fixed;
+    top: 8vh;
+    transition: top 0.6s;
+  }
+
+.about-title {
+    color: white;
+}
+
+.about-links a {
+    color: white;
+}
+

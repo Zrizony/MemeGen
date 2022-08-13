@@ -12,11 +12,11 @@
   <body onload="onInit()">
     <!-- HEADER -->
     <header class="header-main flex space-between">
-      <a href="#"><img src="imgs/LOGO.png" alt="logo" class="logo" /></a>
+      <a href="#"><img src="imgs/LOGO.png" alt="logo" class="logo" onclick="onInit()" /></a>
       <nav class="nav flex align-center">
         <a href="#" onclick="onInit()">home</a>
         <a href="#" onclick="onSavedClick()">saved</a>
-        <a href="#" onclick="openAbout()">about</a>
+        <a href="#" onclick="onOpenAbout()">about</a>
       </nav>
     </header>
 
@@ -78,17 +78,29 @@
     </section>
 
     <!-- SAVED MEMES -->
-    <section id="save" class="saves-main">
+    <section class="saved-main">
       <h1>Saved Memes</h1>
-      <img src="" alt="" />
+      <section id="save" class="saved-memes">
+        <section class="saved-memes-container">
+          <img src="" alt="" class="saved-meme"/>
+        </section>
+      </section>
     </section>
 
     <!-- FLASH MSG -->
     <div class="flash-msg"></div>
 
     <!-- ABOUT -->
-    <section class="about-main">
-      <h1>About</h1>
+    <section class="about-main about-modal">
+        <h1 class="about-title">If you likes this Meme Generator be sure to check out more about me and my projects 🗿</h1>
+        <ul class="about-links-list clean-list">
+          <li class="about-links"><a href="https://www.linkedin.com/in/roy-yam/" target="_blank">LinkedIn</a></li>
+          <li class="about-links"><a href="https://github.com/Zrizony" target="_blank">GitHub</a></li>
+          <li class="about-links"><a href="https://www.instagram.com/zrizony/" target="_blank">Instagran</a></li>
+          <li class="about-links"><a href="https://twitter.com/Zrizony" target="_blank">Twitter</a></li>
+        </ul>
+        
+        <button onclick="onCloseAbout()">cool</button>
     </section>
 
     <!-- FOOTER -->
@@ -108,6 +120,7 @@
     <script src="js/services/gallery.service.js"></script>
     <script src="js/services/saves.service.js"></script>
     <script src="js/services/meme.service.js"></script>
+    <script src="js/about.controller.js"></script>
     <script src="js/gallery.controller.js"></script>
     <script src="js/saves.controller.js"></script>
     <script src="js/meme.controller.js"></script>

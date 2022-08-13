@@ -1,7 +1,9 @@
 /* MODAL */
 .modal {
-  background-image: url('/imgs/backgrounds/editor-bg.png');
   background-color: var(--color1);
+  background-image: url('/imgs/backgrounds/editor-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: 90vw, 90vh;
   color: var(--color2);
   padding: 10px;
   position: fixed;
@@ -34,7 +36,6 @@
 .meme-editor {
   width: 500px;
   height: 500px;
-  border: 2px solid green;
   display: grid;
   gap: 5px;
 }

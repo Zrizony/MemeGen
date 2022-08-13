@@ -145,8 +145,9 @@
 
 @media (min-width: 760px) {
   /* HEADER */
-  .logo-a {
-    width: 100%;
+  .logo {
+    height: 50%;
+    width: 50%;
   }
 
   .nav-links {

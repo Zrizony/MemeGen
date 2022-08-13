@@ -73,7 +73,7 @@
 
 .grid-container {
   background-color: var(--color1);
-  background-image: url('/imgs/backgrounds/bg.png');
+  background-image: url('/imgs/backgrounds/OG-memes.jpg');
   display: grid;
   padding: 20px 0;
   grid-template-columns: repeat(5, 1fr);

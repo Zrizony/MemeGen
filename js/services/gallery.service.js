@@ -4,12 +4,12 @@ let gImgs = [
   {
     id: 1,
     url: 'imgs/1.jpg',
-    keywords: ['speech', 'funny', 'politics'],
+    keywords: ['WTF', 'funny', 'comic'],
   },
   {
     id: 2,
     url: 'imgs/2.jpg',
-    keywords: ['puppy', 'cute', 'kiss'],
+    keywords: ['reletable', 'trend', 'kiss'],
   },
   {
     id: 3,

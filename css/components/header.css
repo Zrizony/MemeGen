@@ -18,23 +18,18 @@
 
 .nav-links ul{
   display: flex;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-links li{
-  list-style: none;
 }
 
 .nav-links li a{
-  text-decoration: none;
   color: white;
   padding: 1rem;
   display: block;
+  cursor: pointer;
 }
 
 .nav-links li:hover{
   background-color: var(--color4);
+  border-radius: 5px;
 }
 
 .nav-toggle {

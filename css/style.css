@@ -2,6 +2,7 @@
 @import 'helpers.css';
 @import 'vars.css';
 @import 'components/header.css';
+@import 'components/saves.css';
 @import 'components/main.css';
 @import 'components/modal.css';
 @import 'components/about.css';

@@ -148,8 +148,8 @@ function onSearchSubmit(e) {
 }
 
 //---- toggle navbar at mobile mode ----//
-const elNavBar = document.querySelector('.nav-toggle')[0]
-const elNavLinks = document.querySelector('.nav-links')[0]
+const elNavBar = document.getElementsByClassName('nav-toggle')[0]
+const elNavLinks = document.getElementsByClassName('nav-links')[0]
 
 elNavBar.addEventListener('click', () => {
     elNavLinks.classList.toggle('active')

@@ -15,9 +15,9 @@ function renderSavedMemes() {
     let savedMemes = loadFromStorage('memeDB') || []
 
     let htmlStr = savedMemes.map(meme =>
-        `<section class="saved-memes-container">
+        `
             <img onclick="onSavedMemeClick(this)" src="${meme}" alt="" class="saved-meme">
-        </section>`
+        `
     )
 
     document.querySelector('.saved-memes-container').innerHTML = htmlStr.join('')

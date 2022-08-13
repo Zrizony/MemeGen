@@ -3,12 +3,10 @@
 
 function onSavedClick() {
     renderSavedMemes()
-    removeMenu()
 }
 
 function renderSavedMemes() {
     elMainSaved.style.display = 'grid'
-    elMainEdit.style.display = 'none'
     elSearchContainer.style.display = 'none'
     elMainGallery.style.display = 'none'
 

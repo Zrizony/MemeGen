@@ -48,7 +48,7 @@ function newTextLine(pos) {
   }
 
   gMeme.lines.push(newText)
-  gCurrLine++
+  gCurrLine = gMeme.lines.length -1
 }
 
 //-- change text line focus

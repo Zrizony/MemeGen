@@ -24,6 +24,19 @@
   .nav-links.active {
     display: flex;
   }
+
+  .modal {
+    flex-direction: column;
+  }
+
+  .canvas-container {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .meme-editor {
+    flex-grow: 1;
+  }
 }
 
 /* SMAll LAYOUT */
@@ -73,6 +86,12 @@
   .gallery-img:hover {
     transform: scale(110%);
     transition: transform 0.3s;
+  }
+
+  /* EDITOR */
+  .canvas-container {
+    width: 100px;
+    height: 100px;
   }
 
   /* SAVES */
@@ -145,6 +164,12 @@
     transition: transform 0.3s;
   }
 
+  /* EDITOR */
+  .canvas-container {
+    width: 333px;
+    height: 333px;
+  }
+
   /* SAVES */
   .saved-memes-container {
     max-width: var(--medium);
@@ -201,6 +226,12 @@
   .gallery-img:hover {
     transform: scale(110%);
     transition: transform 0.3s;
+  }
+
+  /* EDITOR */
+  .canvas-container {
+    width: 666px;
+    height: 666px;
   }
 
   /* SAVES */

@@ -25,6 +25,7 @@ function renderWebsiteImg(elImg) {
   gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
 }
 
+//-- uplaoding image from user computer
 function uploadImage(ev, onImageReady) {
   var reader = new FileReader()
 
@@ -37,6 +38,7 @@ function uploadImage(ev, onImageReady) {
   reader.readAsDataURL(ev.target.files[0])
 }
 
+//-- rendering image from user computer
 function renderImg(img) {
   gUploadImg = img
 
@@ -190,8 +192,6 @@ function onShareToFacebook() {
   shareImg()
 }
 
-//DOTO - add stickers functionality
-
 //---- flash msg to notify small updates ----//
 function flashMsg(msg) {
   const el = document.querySelector('.flash-msg')
@@ -200,4 +200,26 @@ function flashMsg(msg) {
   setTimeout(() => {
     el.classList.remove('open')
   }, 3000)
+}
+
+//---- adding listeners ----//
+function addListeners() {
+  addMouseListeners()
+  addTouchListeners()
+  window.addEventListener('resize', () => {
+    resizeCanvas()
+    renderCanvas()
+  })
+}
+
+function addMouseListeners() {
+  gElCanvas.addEventListener('mousedown', onDown)
+  gElCanvas.addEventListener('mousemove', onMove)
+  gElCanvas.addEventListener('mouseup', onUp)
+}
+
+function addTouchListeners() {
+  gElCanvas.addEventListener('touchstart', onDown)
+  gElCanvas.addEventListener('touchmove', onMove)
+  gElCanvas.addEventListener('touchend', onUp)
 }

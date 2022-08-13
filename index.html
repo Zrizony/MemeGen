@@ -8,6 +8,7 @@
     <link rel="icon" type="image/png" href="imgs/doge.png" />
     <title>Meme Generator</title>
   </head>
+
   <body onload="onInit()">
     <!-- HEADER -->
     <header class="header-main flex space-between">
@@ -22,21 +23,9 @@
     <!-- MAIN -->
     <section class="home-main">
       <section class="search-main">
-        <input
-          type="text"
-          id="search-input"
-          class="search-input"
-          placeholder="Search image to meme"
-          oninput="onSearchInput()"
-        />
+        <input type="text" id="search-input" class="search-input" placeholder="search image" oninput="onSearchInput()"/>
         <label for="file-upload" class="label-upload">📁 upload picture</label>
-        <input
-          type="file"
-          id="file-upload"
-          class="file-input"
-          name="image"
-          onchange="onImgUpload(event)"
-        />
+        <input type="file" id="file-upload" class="file-input" name="image" onchange="onImgUpload(event)" />
         <button onclick="onInit()" class="reset-filter">🔄 reset</button>
         <div class="search-keywords flex justify-center align-center"></div>
       </section>
@@ -50,67 +39,30 @@
     <div class="edit-bg-main full modal-bg" onclick="onToggleModal()"></div>
     <section class="edit-main modal flex align-center space-around">
       <div class="canvas-container">
-        <canvas
-          id="canvas"
-          class="canvas"
-          width="666px"
-          height="666px"
-        ></canvas>
+        <canvas id="canvas" class="canvas" width="666px" height="666px"></canvas>
       </div>
       <section class="meme-editor">
         <!----------- text control ----------->
         <div class="text-edit">
-          <input
-            type="text"
-            class="meme-text"
-            placeholder="memiest text ever"
-            oninput="onTypingText()"
-            value=""
-          />
+          <input type="text" class="meme-text" placeholder="never gonna give you up" oninput="onTypingText()" value=""/>
         </div>
-        <button class="btn-modal btn-add-line" onclick="onAddNewText()">
-          ➕
-        </button>
-        <button class="btn-modal btn-change-focus" onclick="onChangeLine()">
-          🔄
-        </button>
-        <button class="btn-modal btn-delete-line" onclick="onDeleteText()">
-          ❌
-        </button>
+        <button class="btn-modal btn-add-line" onclick="onAddNewText()">➕</button>
+        <button class="btn-modal btn-change-focus" onclick="onChangeLine()">🔄</button>
+        <button class="btn-modal btn-delete-line" onclick="onDeleteText()">❌</button>
         <!----------- font settings ----------->
         <section class="meme-font">
-          <button class="btn-modal btn-font-up" onclick="onFontSizeUp()">
-            A+
-          </button>
-          <button class="btn-modal btn-font-down" onclick="onFontSizeDown()">
-            A-
-          </button>
-          <button class="btn-modal btn-stroke-up" onclick="onStrokeSizeUp()">
-            S+
-          </button>
-          <button
-            class="btn-modal btn-stroke-down"
-            onclick="onStrokeSizeDown()"
-          >
-            S-
-          </button>
-          <button class="btn-modal btn-align-left" onclick="">left</button>
-          <button class="btn-modal btn-align-center" onclick="">center</button>
-          <button class="btn-modal btn-align-right" onclick="">right</button>
-          <label for="font-color" onchange="onFontColorChange()"
-            >font color</label
-          >
-          <input type="color" class="font-color" />
-          <label for="stroke-color" onchange="onStrokeColorChange()"
-            >stroke color</label
-          >
-          <input type="color" class="stroke-color" />
-        </section>
-        <!----------- stickers ----------->
-        <section class="meme-stickers">
-          <button class="btn btn-modal btn-sticker-left"><</button>
-          <span class="stickers">stickers here</span>
-          <button class="btn btn-modal btn-sticker-right">></button>
+          <div class="fonts-sizes">
+            <button class="btn-modal btn-font-up" onclick="onFontSizeUp()">A+</button>
+            <button class="btn-modal btn-font-down" onclick="onFontSizeDown()">A-</button>
+            <button class="btn-modal btn-stroke-up" onclick="onStrokeSizeUp()">S+</button>
+            <button class="btn-modal btn-stroke-down" onclick="onStrokeSizeDown()">S-</button>
+          </div>
+          <div class="colors">
+            <label for="font-color" >font color</label>
+            <input type="color" class="font-color" onchange="onFontColorChange()"/>
+            <label for="stroke-color" >stroke color</label>
+            <input type="color" class="stroke-color" onchange="onStrokeColorChange()"/>
+          </div>
         </section>
         <!----------- social ----------->
         <section class="meme-social">
@@ -122,7 +74,7 @@
           <button class="btn btn-modal btn-save" onclick="onToggleModal()">
             save
           </button>
-          <button class="btn btn-modal btn-share">share</button>
+          <button class="btn btn-modal btn-share" onclick="onImgUpload(ev)">share</button>
         </section>
       </section>
     </section>

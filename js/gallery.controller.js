@@ -34,7 +34,8 @@ function onSearchSubmit(e) {
   elSearch.value = ''
 }
 
-//-- keywords functions
+//---- keywords functions ----//
+//-- changing clicked word size and filtering gallery with this keyword
 function onWordClick(ev) {
   document.getElementById('search-input').value = ev.innerHTML.toString()
   onSearchInput()
@@ -51,6 +52,7 @@ function onWordClick(ev) {
   saveToStorage('keywordsDB', fontSizes)
 }
 
+//-- rendering keywords
 function renderKeywords() {
   let htmlStr = ``
 
@@ -71,6 +73,7 @@ function renderKeywords() {
   }
 }
 
+//-- creating keywords for fast onclick filtering
 function createKeyWords() {
   let newFontSizes = loadFromStorage('keywordsDB') || null
   if (!newFontSizes) {

@@ -35,6 +35,7 @@ function createText(memeText, selectedLineIdx) {
   gMeme.lines[selectedLineIdx].txt = memeText
 }
 
+//-- add new text line
 function newTextLine(pos) {
   let newText = {
     txt: '',
@@ -50,6 +51,7 @@ function newTextLine(pos) {
   gCurrLine++
 }
 
+//-- change text line focus
 function changeTextFocus() {
   if (gCurrLine === gMeme.lines.length - 1) {
     gCurrLine = 0
@@ -58,6 +60,7 @@ function changeTextFocus() {
   }
 }
 
+//-- delete focused text line
 function deleteText(pos) {
   if (gMeme.lines.length === 1) {
     gMeme.lines[gCurrLine].txt = ''
@@ -69,6 +72,7 @@ function deleteText(pos) {
   if (!gCurrLine === 0) gCurrLine--
 }
 
+//-- changes font size
 function fontSizeUp() {
   gMeme.lines[gCurrLine].size += 2
 }
@@ -78,6 +82,7 @@ function fontSizeDown() {
   gMeme.lines[gCurrLine].size -= 2
 }
 
+//-- changes stroke size
 function strokeSizeUp() {
   gMeme.lines[gCurrLine].strokeSize += 1
 }
@@ -87,31 +92,20 @@ function strokeSizeDown() {
   gMeme.lines[gCurrLine].strokeSize -= 1
 }
 
+//-- changes font color
 function fontColorChange(fontColor) {
-  gMeme.lines[gCurrLine].color = fontColor
+  gMeme.lines[gCurrLine].textColor = fontColor
 }
 
+//-- changes stroke color
 function strokeColorChange(strokeColor) {
   gMeme.lines[gCurrLine].strokeColor = strokeColor
 }
 
 //---- handle eventListeners ----//
-
-function addListeners() {
-  addMouseListeners()
-  // addTouchListeners()
-}
-
-function addMouseListeners() {
-  gElCanvas.addEventListener('mousedown', onDown)
-  gElCanvas.addEventListener('mousemove', onMove)
-  gElCanvas.addEventListener('mouseup', onUp)
-}
-
 function onDown(ev) {
   // Getting the clicked position
   const pos = getEvPos(ev)
-  // { x: 15, y : 15 }
   if (!isTextClicked(pos)) return
   setTextDrag(true)
   gStartPos = pos

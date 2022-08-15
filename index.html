@@ -12,20 +12,20 @@
   <body onload="onInit()">
     <!-- HEADER -->
     <header class="header-main">
-      <nav class="nav">
+      <nav class="flex space-between nav">
 
         <a href="#" onclick="onInit()" class="logo-a">
           <img src="imgs/LOGO.png" alt="logo" class="logo" />
         </a>
       
-        <a href="#" class="nav-toggle"> <!-- nav burger design -->
+        <a href="#" class="flex nav-toggle"> <!-- nav burger design -->
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
         </a>
 
         <div class="nav-links">
-          <ul class="clean-list">
+          <ul class="flex clean-list">
             <li><a onclick="onInit()">home</a></li>
             <li><a onclick="onSavedClick()">save</a></li>
             <li><a onclick="onOpenAbout()">about</a></li>
@@ -37,14 +37,14 @@
 
     <!-- MAIN -->
     <section class="home-main">
-      <section class="search-main">
+      <section class="flex align-center flex-direction-column search-main">
         <div class="search-inputs">
           <input type="text" id="search-input" class="search-input" placeholder="search image" oninput="onSearchInput()"/>
           <label for="file-upload" class="label-upload">📁 upload picture</label>
           <input type="file" id="file-upload" class="file-input" name="image" onchange="onImgUpload(event)" />
           <button onclick="onInit()" class="reset-filter">reset filter</button>
         </div>
-        <div class="search-keywords flex justify-center align-center"></div>
+        <div class="flex flex-wrap justify-center align-center search-keywords"></div>
       </section>
 
       <section class="gallery-main">
@@ -54,7 +54,7 @@
 
     <!-- EDITOR -->
     <div class="edit-bg-main full modal-bg" onclick="onToggleModal()"></div>
-    <section class="edit-main modal flex align-center space-around">
+    <section class="flex align-center space-around edit-main modal">
       <div class="canvas-container">
         <canvas id="canvas" class="canvas" width="666px" height="666px"></canvas>
       </div>
@@ -63,24 +63,23 @@
         <div class="text-edit">
           <input type="text" class="meme-text" placeholder="never gonna give you up" oninput="onTypingText()" value=""/>
         </div>
-        <button class="btn-modal btn-add-line" onclick="onAddNewText()">➕</button>
-        <button class="btn-modal btn-change-focus" onclick="onChangeLine()">🔄</button>
-        <button class="btn-modal btn-delete-line" onclick="onDeleteText()">❌</button>
+        <div class="flex text-features">
+          <button class="btn-modal btn-add-line" onclick="onAddNewText()">➕</button>
+          <button class="btn-modal btn-change-focus" onclick="onChangeLine()">🔄</button>
+          <button class="btn-modal btn-delete-line" onclick="onDeleteText()">❌</button>
+        </div>
         <!----------- font settings ----------->
         <section class="meme-font">
-          <div class="fonts-sizes">
+            <span>Text</span>
+            <span>Stroke</span>
+
             <button class="btn-modal btn-font-up" onclick="onFontSizeUp()">A+</button>
-            <button class="btn-modal btn-font-down" onclick="onFontSizeDown()">A-</button>
             <button class="btn-modal btn-stroke-up" onclick="onStrokeSizeUp()">S+</button>
+            <button class="btn-modal btn-font-down" onclick="onFontSizeDown()">A-</button>
             <button class="btn-modal btn-stroke-down" onclick="onStrokeSizeDown()">S-</button>
-          </div>
-          <div class="colors">
-            <label for="font-color" >font color</label>
-            <input type="color" class="font-color" onchange="onFontColorChange()"/>
-            <br>
-            <label for="stroke-color" >stroke color</label>
+           
+            <input type="color" class="font-color" id="font-color" onchange="onFontColorChange()"/>
             <input type="color" class="stroke-color" onchange="onStrokeColorChange()"/>
-          </div>
         </section>
         <!----------- social ----------->
         <section class="meme-social">
@@ -98,11 +97,9 @@
     <!-- SAVED MEMES -->
     <section class="saved-main">
       <h1 class="saved-title">Saved Memes</h1>
-      <section id="save" class="saved-memes">
-        <section class="saved-memes-container">
+      <section id="save" class="saved-memes-container">
           <img src="" alt="" class="saved-meme"/>
         </section>
-      </section>
     </section>
 
     <!-- FLASH MSG -->
@@ -129,10 +126,7 @@
     </footer>
 
     <!-- SCRIPTS -->
-    <script
-      src="https://kit.fontawesome.com/1346f0f8d8.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/1346f0f8d8.js" crossorigin="anonymous"></script>
     <script src="js/services/storage.service.js"></script>
     <script src="js/services/gallery.service.js"></script>
     <script src="js/services/saves.service.js"></script>

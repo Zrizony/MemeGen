@@ -1,0 +1,48 @@
+/* BASE */
+* {
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+body {
+  font-size: 1rem;
+  margin: 0;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  text-transform: capitalize;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 1em;
+  line-height: 1.875rem;
+  color: #4f4e4e;
+}
+
+a {
+  text-decoration: none;
+  font-size: 1.5em;
+  color: #524a4e;
+}
+
+.btn {
+  cursor: pointer;
+}
+
+/* flash mgs */
+.flash-msg {
+  position: fixed;
+  bottom: -100px;
+  right: 10px;
+  background-color: #111;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+}
+.flash-msg.open {
+  bottom: 10px;
+  transition: bottom 0.5s;
+}

@@ -1,10 +1,14 @@
-@import 'base.css';
-@import 'helpers.css';
-@import 'vars.css';
+@import 'base/base.css';
+@import 'base/helpers.css';
+@import 'base/vars.css';
+
 @import 'components/header.css';
 @import 'components/saves.css';
 @import 'components/main.css';
-@import 'components/modal.css';
+@import 'components/editor.css';
 @import 'components/about.css';
 @import 'components/footer.css';
-@import 'media-queries.css';
+
+@import 'media-queries/small.css';
+@import 'media-queries/medium.css';
+@import 'media-queries/large.css';

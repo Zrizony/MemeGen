@@ -22,26 +22,3 @@
   display: grid; /* none when gallery is shown */
   background-color: transparent;
 }
-
-.saved-memes-container {
-  display: grid;
-  padding: 20px 0;
-  grid-template-columns: repeat(5, 1fr);
-  grid-row: repeat(5, 1fr);
-  gap: 20px;
-  background-color: transparent;
-}
-
-.saved-meme {
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 5px;
-  cursor: pointer;
-  transform: scale(100%);
-  transition: transform 0.3s;
-}
-.saved-meme:hover {
-  transform: scale(110%);
-  transition: transform 0.3s;
-}

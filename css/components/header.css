@@ -6,25 +6,8 @@
   padding: 0 20px 0;
 }
 
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .logo {
   width: 10rem;
-}
-
-.nav-links ul{
-  display: flex;
-}
-
-.nav-links li a{
-  color: white;
-  padding: 1rem;
-  display: block;
-  cursor: pointer;
 }
 
 .nav-links li:hover{

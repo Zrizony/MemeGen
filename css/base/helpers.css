@@ -1,0 +1,42 @@
+/* FLEX HELPERS */
+.flex {
+  display: flex;
+}
+
+.flex.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex.space-between {
+  justify-content: space-between;
+}
+
+.flex.space-around {
+  justify-content: space-around;
+}
+
+.flex.align-center {
+  align-items: center;
+}
+
+.flex.justify-center {
+  justify-content: center;
+}
+
+.flex.flex-direction-column {
+  flex-direction: column;
+}
+
+/* LIST HELPERS */
+
+.clean-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+/* spreading container to fullscreen */
+.full {
+  width: 100%;
+  height: 100%;
+}

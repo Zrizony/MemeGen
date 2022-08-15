@@ -7,7 +7,7 @@ function onSavedClick() {
 }
 
 function renderSavedMemes() {
-    elMainSaved.style.display = 'grid'
+    elMainSaved.style.display = 'block'
     elSearchContainer.style.display = 'none'
     elMainGallery.style.display = 'none'
 

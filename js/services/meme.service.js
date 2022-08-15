@@ -147,10 +147,10 @@ function onUp() {
 }
 
 //---- handle text dragging ----//
-function isTextClicked(clickedPos) {
+function isTextClicked({x,y}) {
   const { pos } = gMeme.lines[gCurrLine]
   const distance = Math.sqrt(
-    (pos.x - clickedPos.x) ** 2 + (pos.y - clickedPos.y) ** 2
+    (pos.x - x) ** 2 + (pos.y - y) ** 2
   )
   return distance <= 50
 }

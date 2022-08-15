@@ -1,7 +1,7 @@
 'use strict'
 
 const elSearchContainer = document.querySelector('.search-main')
-const elMainGallery = document.querySelector('.gallery-main')
+const elMainGallery = document.querySelector('.grid-container')
 const elMainEdit = document.querySelector('.edit-main')
 const elMainSaved = document.querySelector('.saved-main')
 const elNavBar = document.getElementsByClassName('nav-toggle')[0]
@@ -113,6 +113,7 @@ function renderGallery() {
 
 //---- opening meme editor modal with selected image ----//
 function onImgSelect(imgId) {
+  console.log('imgId:', imgId);
   const elCanvas = document.getElementById('canvas')
   const img = getImgById(imgId)
   const elImg = document.querySelector(`.gallery-img${img.id}`)

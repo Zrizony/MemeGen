@@ -1,0 +1,154 @@
+/* MEDIUM LAYOUT */
+@media (min-width: 1000px) {
+  /* HEADER */
+
+  .nav-links {
+    display: flex;
+    width: 100%;
+    flex: 2;
+  }
+  .nav-links ul {
+    width: 100%;
+    flex-direction: row;
+  }
+  .nav-links li a {
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--color1);
+    padding: 0 1rem;
+    cursor: pointer;
+  }
+
+  /* GALLERY */
+  .search-main {
+    flex-direction: row;
+  }
+  .search-inputs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+  }
+  .search-input {
+    padding: 7px 2px;
+  }
+  .reset-filter {
+    width: 120px;
+  }
+  .search-keywords {
+    cursor: pointer;
+  }
+  .grid-container {
+    max-width: var(--large);
+    padding: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 1rem;
+  }
+  .gallery-img {
+    width: 15rem;
+    height: 15rem;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    transform: scale(100%);
+    transition: transform 0.3s;
+  }
+  .gallery-img:hover {
+    transform: scale(110%);
+    transition: transform 0.3s;
+  }
+
+  /* EDITOR */
+  .modal {
+    width: 90vw;
+    height: 90vh;
+    gap: 2rem;
+  }
+  .modal.open {
+    position: fixed;
+    top: 4vh;
+    transition: top 0.6s;
+  }
+  .canvas-container {
+    width: 666px;
+    height: 666px;
+  }
+  .meme-editor {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 50vh;
+    width: 45vw;
+  }
+  .text-edit {
+    padding: 0 0 3px;
+  }
+  .meme-text {
+    padding: 2px;
+  }
+  .text-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: space-around;
+    height: 4rem;
+    gap: 2rem;
+  }
+  .meme-font {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    justify-items: center;
+    gap: 1rem;
+  }
+  .meme-font span {
+    align-self: center;
+    font-size: 2rem;
+    color: white;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+  }
+  .meme-font .btn-modal {
+    width: 10rem;
+    height: 3rem;
+  }
+  .meme-social {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+  }
+  .btn-modal {
+    border: 2px solid pink;
+  }
+  .btn-save {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+  .btn-download {
+    grid-area: 1 / 2 / 2 / 3;
+  }
+  .btn-share {
+    grid-area: 1 / 3 / 2 / 4;
+  }
+
+  /* SAVES */
+  .saved-memes-container {
+    max-width: var(--large);
+    padding: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 2rem;
+  }
+  .saved-meme {
+    width: 15rem;
+    height: 15rem;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    transform: scale(100%);
+    transition: transform 0.3s;
+  }
+  .saved-meme:hover {
+    transform: scale(110%);
+    transition: transform 0.3s;
+  }
+}
